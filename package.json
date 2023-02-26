@@ -1,0 +1,28 @@
+{
+  "name": "tour_info_zh-tw",
+  "version": "1.0.0",
+  "description": "旅遊資訊收集網站，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
+  "main": "index.js",
+  "scripts": {
+    "check": "npx prettier --check .",
+    "format": "npx prettier --write .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronny1020/tour_info_zh-tw.git"
+  },
+  "keywords": [
+    "旅遊"
+  ],
+  "author": "ronny1020",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronny1020/tour_info_zh-tw/issues"
+  },
+  "homepage": "https://github.com/ronny1020/tour_info_zh-tw#readme",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "prettier": "^2.8.4"
+  }
+}
