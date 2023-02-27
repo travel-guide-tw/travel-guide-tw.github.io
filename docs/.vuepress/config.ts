@@ -51,6 +51,7 @@ function findTheEndOfSidebar(nodes: SidebarGroup[], path: string = "") {
 const sidebar = findTheEndOfSidebar(nodes as SidebarGroup[]);
 
 module.exports = {
+  base: "/tour_info_zh-tw/",
   title: "歡迎到旅遊資訊專案",
   description:
     "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
