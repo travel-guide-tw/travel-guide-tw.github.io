@@ -6,14 +6,7 @@ const sidebar: SidebarConfig = []
 
 glob
   .sync('docs/**/*.md')
-  .map((path) =>
-    path
-      .replace('docs/', '')
-      .replace('/index', '')
-      .replace('/README', '')
-      .replace('index', '')
-      .replace('README', '')
-  )
+  .map((path) => path.replace('docs/', ''))
   .sort()
   .forEach((path) =>
     path.split('/').forEach((name, index, array) => {
@@ -27,17 +20,15 @@ glob
         ).children
       }
 
-      if (name === '.md') {
-        children.push(`/${path.replace('.md', '')}`)
+      if (name === 'index.md' || name === 'README.md') {
+        children.push(
+          `/${path.replace('index.md', '').replace('README.md', '')}`
+        )
         return
       }
 
       if (name.endsWith('.md')) {
-        children.push({
-          text: `${name.replace('.md', '')}`,
-          children: [`/${path.replace('.md', '')}`],
-          collapsible: true,
-        })
+        children.push(`/${path.replace('.md', '')}`)
         return
       }
 
