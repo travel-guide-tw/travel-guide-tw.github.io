@@ -2,13 +2,12 @@ import { searchPlugin } from "@vuepress/plugin-search";
 import { defaultTheme, SidebarConfig, SidebarGroup } from "vuepress";
 import glob from "glob";
 
-const nodes: SidebarConfig = [];
+const sidebar: SidebarConfig = [];
 
 glob
   .sync("docs/**/*.md")
   .map((path) =>
     path
-      .replace(".md", "")
       .replace("docs/", "")
       .replace("/index", "")
       .replace("/README", "")
@@ -18,37 +17,39 @@ glob
   .sort()
   .forEach((path) =>
     path.split("/").forEach((name, index, array) => {
-      let children = nodes as SidebarGroup[];
+      let children = sidebar;
 
       for (let i = 0; i < index; i++) {
-        children = children.find(({ text }) => text === array[i])
-          ?.children as SidebarGroup[];
+        children = (
+          children.find(
+            (child) => typeof child === "object" && child.text === array[i]
+          ) as SidebarGroup
+        ).children;
       }
 
-      const child = children.find(({ text }) => text === name);
+      if (name === ".md") {
+        children.push(`/${path.replace(".md", "")}`);
+        return;
+      }
+
+      if (name.endsWith(".md")) {
+        children.push({
+          text: `${name.replace(".md", "")}`,
+          children: [`/${path.replace(".md", "")}`],
+          collapsible: true,
+        });
+        return;
+      }
+
+      const child = children.find(
+        (child) => typeof child === "object" && child.text === name
+      ) as SidebarGroup;
 
       if (!child) {
         children.push({ text: name, children: [], collapsible: true });
       }
     })
   );
-
-function findTheEndOfSidebar(nodes: SidebarGroup[], path: string = "") {
-  return nodes.map(({ children, text, collapsible }) =>
-    children.length
-      ? {
-          text,
-          collapsible,
-          children: findTheEndOfSidebar(
-            children as SidebarGroup[],
-            `${path}/${text}`
-          ),
-        }
-      : `${path}/${text}`
-  );
-}
-
-const sidebar = findTheEndOfSidebar(nodes as SidebarGroup[]);
 
 module.exports = {
   base: "/tour_info_zh-tw/",
