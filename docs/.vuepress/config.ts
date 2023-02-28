@@ -22,9 +22,7 @@ glob
 
       if (name === 'index.md' || name === 'README.md') {
         children.push(
-          `/${path
-            .replace('index.md', '')        
-            .replace('README.md', '')}`
+          `/${path.replace('index.md', '').replace('README.md', '')}`
         )
         return
       }
