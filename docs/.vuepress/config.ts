@@ -1,6 +1,10 @@
 import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme, SidebarConfig, SidebarGroup } from 'vuepress'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import glob from 'glob'
+
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const sidebar: SidebarConfig = []
 
@@ -47,7 +51,12 @@ module.exports = {
   title: '台灣軟體人旅遊指南',
   description:
     '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
-  plugins: [searchPlugin()],
+  plugins: [
+    searchPlugin(),
+    googleAnalyticsPlugin({
+      id: process.env.VITE_APP_GOOGLE_TAG_ID as string,
+    }),
+  ],
   theme: defaultTheme({
     repo: 'ronny1020/tour_info_zh-tw',
     docsDir: 'docs',

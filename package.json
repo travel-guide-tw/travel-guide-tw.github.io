@@ -26,7 +26,9 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@vuepress/plugin-git": "^2.0.0-beta.60",
+    "@vuepress/plugin-google-analytics": "^2.0.0-beta.61",
     "@vuepress/plugin-search": "^2.0.0-beta.60",
+    "dotenv": "^16.0.3",
     "glob": "^8.1.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.4",
