@@ -10,8 +10,33 @@ const sidebar: SidebarConfig = []
 
 glob
   .sync('docs/**/*.md')
-  .map((path) => path.replace('docs/', ''))
-  .sort()
+  .sort((a, b) => {
+    const aArray = a.split('/')
+    const bArray = b.split('/')
+
+    for (let i = 0; i < Math.min(aArray.length, bArray.length); i++) {
+      const aName = aArray[i]
+      const bName = bArray[i]
+      if (aName !== bName) {
+        if (aName === 'index.md' || aName === 'README.md') {
+          return -1
+        }
+        if (bName === 'index.md' || bName === 'README.md') {
+          return 1
+        }
+        if (aName.endsWith('.md') && !bName.endsWith('.md')) {
+          return -1
+        }
+        if (!aName.endsWith('.md') && bName.endsWith('.md')) {
+          return 1
+        }
+        return aName.localeCompare(bName)
+      }
+    }
+
+    return 0
+  })
+  .map((path) => path.replace('docs/', '').replace(/_/g, ''))
   .forEach((path) =>
     path.split('/').forEach((name, index, array) => {
       let children = sidebar
