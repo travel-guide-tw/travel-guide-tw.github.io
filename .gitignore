@@ -1,6 +1,6 @@
-.vscode
-node_modules
-dist
-.temp
 .cache
 .env
+.temp
+.vscode
+dist
+node_modules
