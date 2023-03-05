@@ -24,6 +24,10 @@ jobs:
           cache: npm
       - run: npm ci
 
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+
       - name: Build VuePress site
         run: npm run build
 
