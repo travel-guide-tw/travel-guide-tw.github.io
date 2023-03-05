@@ -72,7 +72,7 @@ glob
   )
 
 module.exports = {
-  base: '/tour_info_zh-tw/',
+  base: '/travel/',
   title: '台灣軟體人旅遊指南',
   description:
     '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
@@ -83,7 +83,7 @@ module.exports = {
     }),
   ],
   theme: defaultTheme({
-    repo: 'ronny1020/tour_info_zh-tw',
+    repo: 'travel-guide-tw/travel',
     docsDir: 'docs',
     sidebar,
   }),

@@ -4,7 +4,7 @@
 
 ## 網站連結
 
-[台灣軟體人旅遊指南](https://ronny1020.github.io/tour_info_zh-tw/)
+[台灣軟體人旅遊指南](https://travel-guide-tw.github.io/travel/)
 
 ## 專案目的
 
