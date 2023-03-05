@@ -79,7 +79,7 @@ module.exports = {
       'meta',
       {
         name: 'google-site-verification',
-        content: 'Rjthc9AOe3nmszyGAvjyFCJsj',
+        content: process.env.VITE_APP_GOOGLE_META_TAG_CONTENT as string,
       },
     ],
   ],
