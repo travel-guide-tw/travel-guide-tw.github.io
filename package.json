@@ -1,5 +1,5 @@
 {
-  "name": "tour_info_zh-tw",
+  "name": "travel",
   "version": "1.0.0",
   "description": "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
   "main": "index.js",
@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ronny1020/tour_info_zh-tw.git"
+    "url": "git+https://github.com/travel-guide-tw/travel.git"
   },
   "keywords": [
     "旅遊"
   ],
-  "author": "ronny1020",
+  "author": "travel-guide-tw",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ronny1020/tour_info_zh-tw/issues"
+    "url": "https://github.com/travel-guide-tw/travel/issues"
   },
-  "homepage": "https://github.com/ronny1020/tour_info_zh-tw#readme",
+  "homepage": "https://github.com/travel-guide-tw/travel#readme",
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@vuepress/plugin-git": "^2.0.0-beta.60",
