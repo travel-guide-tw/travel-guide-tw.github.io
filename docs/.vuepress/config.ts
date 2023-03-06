@@ -72,7 +72,6 @@ glob
   )
 
 module.exports = {
-  base: '/travel/',
   title: '台灣軟體人旅遊指南',
   head: [
     [
@@ -92,7 +91,7 @@ module.exports = {
     }),
   ],
   theme: defaultTheme({
-    repo: 'travel-guide-tw/travel',
+    repo: 'travel-guide-tw.github.io',
     docsDir: 'docs',
     sidebar,
   }),
