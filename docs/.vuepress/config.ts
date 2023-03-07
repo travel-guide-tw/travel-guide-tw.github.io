@@ -72,7 +72,7 @@ glob
   )
 
 module.exports = {
-  base:'/',
+  base: '/',
   title: '台灣軟體人旅遊指南',
   head: [
     [
