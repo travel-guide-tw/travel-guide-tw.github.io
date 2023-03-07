@@ -73,6 +73,7 @@ glob
 
 module.exports = {
   base: '/',
+  repo: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
   title: '台灣軟體人旅遊指南',
   head: [
     [
