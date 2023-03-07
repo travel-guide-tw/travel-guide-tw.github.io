@@ -4,7 +4,7 @@
 
 ## 網站連結
 
-[台灣軟體人旅遊指南](https://travel-guide-tw.github.io/travel/)
+[台灣軟體人旅遊指南](https://travel-guide-tw.github.io/)
 
 ## 專案目的
 
