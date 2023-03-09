@@ -12,3 +12,4 @@
 1. 推薦可以搭配 vscode [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 插件開發。
 2. 圖片檔請另外上傳至 [imgur](https://imgur.com/) 等免費空間防止專案空間太大。
 3. 資料夾加底線是為了使目標提升到最前面，主要用於不分去類型，非必要請勿添加。
+4. 使用 iframe 內嵌 google 請移除樣式相關設定，包含 `width`, `height`, `style`，以保持統一風格且具有 RWD 功能
