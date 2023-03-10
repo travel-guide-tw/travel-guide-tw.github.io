@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-7041aed4","path":"/%E6%97%A5%E6%9C%AC/","title":"日本","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1677487541000,"contributors":[{"name":"Ronny Hsieh","email":"46809311+ronny1020@users.noreply.github.com","commits":1}]},"filePathRelative":"日本/index.md"}');export{e as data};

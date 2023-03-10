@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"歡迎到台灣軟體人旅遊指南","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1677595689000,"contributors":[{"name":"Ronny Hsieh","email":"46809311+ronny1020@users.noreply.github.com","commits":2}]},"filePathRelative":"README.md"}');export{e as data};
