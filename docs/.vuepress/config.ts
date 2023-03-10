@@ -1,6 +1,8 @@
 import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme, SidebarConfig, SidebarGroup } from 'vuepress'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
+
 import glob from 'glob'
 
 import * as dotenv from 'dotenv'
@@ -88,6 +90,9 @@ module.exports = {
     searchPlugin(),
     googleAnalyticsPlugin({
       id: process.env.VITE_APP_GOOGLE_TAG_ID as string,
+    }),
+    sitemapPlugin({
+      hostname: 'https://travel-guide-tw.github.io/',
     }),
   ],
   theme: defaultTheme({
