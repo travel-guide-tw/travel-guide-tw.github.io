@@ -1,7 +1,13 @@
 import { searchPlugin } from '@vuepress/plugin-search'
-import { defaultTheme, SidebarConfig, SidebarGroup } from 'vuepress'
+import {
+  defaultTheme,
+  SidebarConfig,
+  SidebarGroup,
+  defineUserConfig,
+} from 'vuepress'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
+import { commentPlugin } from 'vuepress-plugin-comment2'
 
 import glob from 'glob'
 
@@ -73,8 +79,10 @@ glob
     })
   )
 
-module.exports = {
-  title: '台灣軟體人旅遊指南',
+export default defineUserConfig({
+  base: '/',
+  description:
+    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
   head: [
     [
       'meta',
@@ -84,8 +92,6 @@ module.exports = {
       },
     ],
   ],
-  description:
-    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
   plugins: [
     searchPlugin(),
     googleAnalyticsPlugin({
@@ -94,10 +100,14 @@ module.exports = {
     sitemapPlugin({
       hostname: 'https://travel-guide-tw.github.io/',
     }),
+    commentPlugin({
+      // 插件选项
+    }),
   ],
   theme: defaultTheme({
     repo: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
     docsDir: 'docs',
     sidebar,
   }),
-}
+  title: '台灣軟體人旅遊指南',
+})
