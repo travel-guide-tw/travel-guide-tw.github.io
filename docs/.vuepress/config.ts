@@ -88,20 +88,24 @@ export default defineUserConfig({
       'meta',
       {
         name: 'google-site-verification',
-        content: process.env.VITE_APP_GOOGLE_META_TAG_CONTENT as string,
+        content: <string>process.env.VITE_APP_GOOGLE_META_TAG_CONTENT,
       },
     ],
   ],
   plugins: [
     searchPlugin(),
     googleAnalyticsPlugin({
-      id: process.env.VITE_APP_GOOGLE_TAG_ID as string,
+      id: <string>process.env.VITE_APP_GOOGLE_TAG_ID,
     }),
     sitemapPlugin({
       hostname: 'https://travel-guide-tw.github.io/',
     }),
     commentPlugin({
-      // 插件选项
+      provider: 'Giscus',
+      repo: 'travel-guide-tw/travel-guide-tw.github.io',
+      repoId: 'R_kgDOJCizzA',
+      category: 'General',
+      categoryId: 'DIC_kwDOJCizzM4CUeRh',
     }),
   ],
   theme: defaultTheme({
