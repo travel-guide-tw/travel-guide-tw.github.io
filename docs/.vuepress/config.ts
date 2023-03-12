@@ -1,7 +1,13 @@
 import { searchPlugin } from '@vuepress/plugin-search'
-import { defaultTheme, SidebarConfig, SidebarGroup } from 'vuepress'
+import {
+  defaultTheme,
+  SidebarConfig,
+  SidebarGroup,
+  defineUserConfig,
+} from 'vuepress'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { sitemapPlugin } from 'vuepress-plugin-sitemap2'
+import { commentPlugin } from 'vuepress-plugin-comment2'
 
 import glob from 'glob'
 
@@ -73,26 +79,33 @@ glob
     })
   )
 
-module.exports = {
-  title: '台灣軟體人旅遊指南',
+export default defineUserConfig({
+  base: '/',
+  description:
+    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
   head: [
     [
       'meta',
       {
         name: 'google-site-verification',
-        content: process.env.VITE_APP_GOOGLE_META_TAG_CONTENT as string,
+        content: <string>process.env.VITE_APP_GOOGLE_META_TAG_CONTENT,
       },
     ],
   ],
-  description:
-    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
   plugins: [
     searchPlugin(),
     googleAnalyticsPlugin({
-      id: process.env.VITE_APP_GOOGLE_TAG_ID as string,
+      id: <string>process.env.VITE_APP_GOOGLE_TAG_ID,
     }),
     sitemapPlugin({
       hostname: 'https://travel-guide-tw.github.io/',
+    }),
+    commentPlugin({
+      provider: 'Giscus',
+      repo: 'travel-guide-tw/travel-guide-tw.github.io',
+      repoId: 'R_kgDOJCizzA',
+      category: 'General',
+      categoryId: 'DIC_kwDOJCizzM4CUeRh',
     }),
   ],
   theme: defaultTheme({
@@ -100,4 +113,5 @@ module.exports = {
     docsDir: 'docs',
     sidebar,
   }),
-}
+  title: '台灣軟體人旅遊指南',
+})
