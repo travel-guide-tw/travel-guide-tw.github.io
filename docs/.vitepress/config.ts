@@ -34,6 +34,12 @@ export default defineConfig({
       },
       text: 'Edit this page on GitHub',
     },
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
+      },
+    ],
   },
   title: '台灣軟體人旅遊指南',
   rewrites: generateRewrites(),
