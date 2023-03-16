@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" v-if="shown">
+  <div class="wrapper" v-if="shown" :key="route.path">
     <Giscus
       repo="travel-guide-tw/travel-guide-tw.github.io"
       repoId="R_kgDOJCizzA"
@@ -9,7 +9,7 @@
       strict="0"
       reactionsEnabled="1"
       emitMetadata="0"
-      inputPosition="bottom"
+      inputPosition="top"
       theme="preferred_color_scheme"
       lang="zh-TW"
       loading="lazy"
@@ -20,8 +20,10 @@
 
 <script lang="ts" setup>
 import Giscus from '@giscus/vue'
+import { useRoute } from 'vitepress'
 
 const shown = location.hostname === 'travel-guide-tw.github.io'
+const route = useRoute()
 </script>
 
 <style lang="scss" scoped>
