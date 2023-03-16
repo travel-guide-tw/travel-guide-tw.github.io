@@ -1,12 +1,12 @@
 import { defineConfig } from 'vitepress'
 import * as dotenv from 'dotenv'
-
-import gtagHead from './typescript/node/generateSidebar'
-import generateSidebar from './typescript/node/sidebat'
-import generateRewrites from './typescript/node/generateRewrites'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
+
+import gtagHead from './typescript/node/gtagHead'
+import generateSidebar from './typescript/node/generateSidebar'
+import generateRewrites from './typescript/node/generateRewrites'
 
 dotenv.config()
 
