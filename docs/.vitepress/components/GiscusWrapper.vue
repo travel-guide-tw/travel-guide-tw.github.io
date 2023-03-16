@@ -14,6 +14,7 @@
       lang="zh-TW"
       loading="lazy"
       crossorigin="anonymous"
+      host="https://giscus.app"
     />
   </div>
 </template>
