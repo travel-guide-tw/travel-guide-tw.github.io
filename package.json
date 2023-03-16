@@ -4,11 +4,11 @@
   "description": "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
   "main": "index.js",
   "scripts": {
-    "build": "vuepress build docs",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
     "check": "npx prettier --check .",
     "format": "npx prettier --write .",
-    "prepare": "husky install",
-    "dev": "vuepress dev docs"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -25,17 +25,13 @@
   "homepage": "https://github.com/travel-guide-tw/travel#readme",
   "devDependencies": {
     "@types/glob": "^8.1.0",
-    "@vuepress/plugin-git": "^2.0.0-beta.60",
-    "@vuepress/plugin-google-analytics": "^2.0.0-beta.61",
-    "@vuepress/plugin-search": "^2.0.0-beta.60",
+    "@types/node": "^18.15.3",
     "dotenv": "^16.0.3",
     "glob": "^8.1.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.4",
-    "vuepress": "^2.0.0-beta.60",
-    "vuepress-plugin-sitemap2": "^2.0.0-beta.100"
-  },
-  "volta": {
-    "node": "16.19.1"
+    "sass": "^1.59.3",
+    "sitemap": "^7.1.1",
+    "vitepress": "^1.0.0-alpha.60"
   }
 }

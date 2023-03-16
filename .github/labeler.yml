@@ -4,8 +4,8 @@ repo:
 GitHub:
   - .github/**/*
 
-vuepress:
-  - docs/.vuepress/**/*
+vitepress:
+  - docs/.vitepress/**/*
 
 日本:
   - docs/日本/**/*
