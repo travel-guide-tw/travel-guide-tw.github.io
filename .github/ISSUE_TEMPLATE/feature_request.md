@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[Feature request]"
+title: '[Feature request]'
 labels: ''
 assignees: ronny1020
-
 ---
 
 **請描述為何需要這功能**
