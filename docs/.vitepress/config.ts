@@ -38,6 +38,7 @@ export default defineConfig({
       {
         icon: 'github',
         link: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
+           target: '_self',
       },
     ],
   },
