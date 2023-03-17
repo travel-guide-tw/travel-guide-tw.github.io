@@ -61,4 +61,14 @@ export default defineConfig({
     await new Promise((r) => writeStream.on('finish', r))
   },
   lastUpdated: true,
+  async transformPageData({ relativePath, title, ...rest }) {
+    const routes = relativePath.split('/')
+    routes[routes.length - 1] = title
+
+    return {
+      relativePath,
+      ...rest,
+      title: routes.join(' -> '),
+    }
+  },
 })
