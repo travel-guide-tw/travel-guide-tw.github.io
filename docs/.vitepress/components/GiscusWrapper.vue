@@ -5,7 +5,7 @@
       repoId="R_kgDOJCizzA"
       category="General"
       categoryId="DIC_kwDOJCizzM4CUeRh"
-      mapping="pathname"
+      mapping="title"
       strict="0"
       reactionsEnabled="1"
       emitMetadata="0"
