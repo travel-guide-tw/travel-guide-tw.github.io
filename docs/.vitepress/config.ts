@@ -72,5 +72,5 @@ export default defineConfig({
       title: routes.join(' -> '),
     }
   },
-  vite: { plugins: [searchPlugin] },
+  vite: { plugins: [searchPlugin], build: { ssr: false } },
 })
