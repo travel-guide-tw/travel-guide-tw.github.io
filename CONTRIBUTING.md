@@ -19,7 +19,6 @@
 2. 可直接在 Github 上進行編輯
 3. 發 PR，讓 GitHub Action 自動排版
 
-
 ## 注意事項
 
 1. 推薦可以搭配 vscode [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 插件開發。
@@ -28,4 +27,3 @@
 4. 使用 iframe 內嵌 google 請移除樣式相關設定，包含 `width`, `height`, `style`，以保持統一風格且具有 RWD 功能。
 5. 請確定提供的訊息不會有版權問題。
 6. 發了 PR 後可先至預覽葉面觀看結果。
-
