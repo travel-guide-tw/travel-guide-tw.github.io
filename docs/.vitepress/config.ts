@@ -7,6 +7,7 @@ import { SitemapStream } from 'sitemap'
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
+import searchPlugin from './typescript/node/searchPlugin'
 
 dotenv.config()
 
@@ -71,4 +72,5 @@ export default defineConfig({
       title: routes.join(' -> '),
     }
   },
+  vite: { plugins: [searchPlugin] },
 })
