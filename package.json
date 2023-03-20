@@ -4,8 +4,8 @@
   "description": "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "dev": "vitepress dev ./",
+    "build": "vitepress build ./",
     "check": "npx prettier --check .",
     "format": "npx prettier --write .",
     "prepare": "husky install"
