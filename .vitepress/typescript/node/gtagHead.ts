@@ -1,4 +1,7 @@
 import { HeadConfig } from 'vitepress'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const gtagHead: HeadConfig[] = <string>process.env.VITE_APP_GOOGLE_TAG_ID
   ? ([
