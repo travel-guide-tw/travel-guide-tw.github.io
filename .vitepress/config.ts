@@ -74,5 +74,5 @@ export default defineConfig({
   },
   vite: { plugins: [searchPlugin], build: { ssr: false } },
   srcDir: 'docs',
-  cleanUrls: true
+  cleanUrls: true,
 })
