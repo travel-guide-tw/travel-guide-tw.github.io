@@ -7,7 +7,6 @@ import { SitemapStream } from 'sitemap'
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
-import searchPlugin from './typescript/node/searchPlugin'
 
 dotenv.config()
 
@@ -34,6 +33,9 @@ export default defineConfig({
         return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${relativePath}`
       },
       text: 'Edit this page on GitHub',
+    },
+    search: {
+      provider: 'local',
     },
     socialLinks: [
       {
@@ -72,7 +74,6 @@ export default defineConfig({
       title: routes.join(' -> '),
     }
   },
-  vite: { plugins: [searchPlugin], build: { ssr: false } },
   srcDir: 'docs',
   cleanUrls: true,
 })
