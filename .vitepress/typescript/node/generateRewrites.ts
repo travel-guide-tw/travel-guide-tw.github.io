@@ -1,9 +1,8 @@
-import glob from 'glob'
+import getFilePaths from './getFilePaths'
 
 export default function generateRewrites() {
   const rewrites = Object.fromEntries(
-    glob
-      .sync('docs/**/*.md')
+    getFilePaths()
       .map((path) => path.replace('docs/', ''))
       .map((path) => [path, path.replace(/_/g, '')])
   )

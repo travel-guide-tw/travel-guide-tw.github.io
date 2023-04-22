@@ -19,6 +19,6 @@
     "types": ["vite/client", "@types/node", "@vue/runtime-core"],
     "lib": ["esnext", "dom"]
   },
-  "include": ["docs/.vitepress/config.ts", "docs/.vitepress/typescript"],
+  "include": [".vitepress/config.ts", ".vitepress/typescript"],
   "exclude": ["node_modules"]
 }
