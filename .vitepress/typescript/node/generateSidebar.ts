@@ -1,11 +1,10 @@
-import glob from 'glob'
 import { DefaultTheme } from 'vitepress'
+import getFilePaths from './getFilePaths'
 
 export default function generateSidebar() {
   const sidebar: DefaultTheme.Sidebar = []
 
-  glob
-    .sync('docs/**/*.md')
+  getFilePaths()
     .sort((a, b) => {
       const aArray = a.split('/')
       const bArray = b.split('/')
