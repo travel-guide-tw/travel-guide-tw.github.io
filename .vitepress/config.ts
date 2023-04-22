@@ -42,7 +42,7 @@ export default defineConfig({
       },
     ],
   },
-  title: '台灣軟體人旅遊指南',
+  title: '台灣開源旅遊指南',
   rewrites: generateRewrites(),
   transformHtml: (_, id, { pageData }) => {
     if (!/[\\/]404\.html$/.test(id))
