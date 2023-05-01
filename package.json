@@ -35,6 +35,6 @@
     "sass": "^1.62.0",
     "segment": "^0.1.3",
     "sitemap": "^7.1.1",
-    "vitepress": "^1.0.0-alpha.74"
+    "vitepress": "^1.0.0-alpha.75"
   }
 }
