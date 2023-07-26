@@ -29,8 +29,8 @@ export default defineConfig({
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
-      pattern: ({ relativePath }) => {
-        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${relativePath}`
+      pattern: ({ filePath }) => {
+        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${filePath}`
       },
       text: 'Edit this page on GitHub',
     },
@@ -46,11 +46,11 @@ export default defineConfig({
   },
   title: '台灣開源旅遊指南',
   rewrites: generateRewrites(),
-  transformHtml: (_, id, { pageData }) => {
+  transformHtml: (_, id, { pageData: { relativePath, lastUpdated } }) => {
     if (!/[\\/]404\.html$/.test(id))
       links.push({
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: pageData.lastUpdated,
+        url: relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+        lastmod: lastUpdated,
       })
   },
   buildEnd: async ({ outDir }) => {
