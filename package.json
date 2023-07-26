@@ -27,7 +27,7 @@
     "@giscus/vue": "^2.2.8",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.2.5",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "glob": "^10.2.6",
     "husky": "^8.0.3",
     "markdown-it": "^13.0.1",
