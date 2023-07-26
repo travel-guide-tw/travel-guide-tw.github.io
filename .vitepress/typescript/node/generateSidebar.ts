@@ -39,7 +39,7 @@ export default function generateSidebar() {
         for (let i = 0; i < index; i++) {
           items = (
             items.find(
-              (child) => typeof child === 'object' && child.text === array[i],
+              (child) => typeof child === 'object' && child.text === array[i]
             ) as DefaultTheme.SidebarMulti
           ).items
         }
@@ -63,13 +63,13 @@ export default function generateSidebar() {
         }
 
         const child = items.find(
-          (child) => typeof child === 'object' && child.text === text,
+          (child) => typeof child === 'object' && child.text === text
         ) as DefaultTheme.Sidebar
 
         if (!child) {
           items.push({ text: text, items: [], collapsed: true })
         }
-      }),
+      })
     )
 
   return sidebar
