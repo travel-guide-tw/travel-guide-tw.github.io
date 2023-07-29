@@ -76,4 +76,9 @@ export default defineConfig({
   },
   srcDir: 'docs',
   cleanUrls: true,
+  markdown: {
+    config: (md) => {
+      md.use(require('markdown-it-task-lists'))
+    },
+  },
 })
