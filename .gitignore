@@ -4,3 +4,6 @@ cache
 .vscode
 dist
 node_modules
+
+docs/台灣/_開源資料/*
+!docs/台灣/_開源資料/index.md
