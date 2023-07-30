@@ -28,9 +28,6 @@ jobs:
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
 
-      - name: load tw travel open source data
-        run: npm run load-tw-open-source-data
-
       - name: Build VitePress site
         run: npm run build
 
