@@ -1,5 +1,7 @@
 # Château de Chillon
 
+![Château de Chillon photo by Huang An Sheng](https://i.imgur.com/9fQOK1j.jpg)
+
 又名 Chillon Castle 是瑞士最著名的古堡之一，位於日內瓦湖畔，湖的對岸是瑞士法國邊界，距離蒙特勒約 3 公里，是瑞士最受歡迎的旅遊景點之一。
 
 - 地址 Av. de Chillon 21, 1820 Veytaux, Switzerland
