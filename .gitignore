@@ -4,3 +4,5 @@ cache
 .vscode
 dist
 node_modules
+_開源資料
+!_開源資料/index.md
