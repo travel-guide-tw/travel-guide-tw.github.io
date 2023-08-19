@@ -4,6 +4,9 @@ import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
 
+// @ts-ignore
+import taskList from 'markdown-it-task-lists'
+
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
@@ -78,7 +81,7 @@ export default defineConfig({
   cleanUrls: true,
   markdown: {
     config: (md) => {
-      md.use(require('markdown-it-task-lists'))
+      md.use(taskList)
     },
   },
 })
