@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev ./",
     "build": "vitepress build ./",
@@ -30,12 +31,11 @@
     "dotenv": "^16.3.1",
     "glob": "^10.3.3",
     "husky": "^8.0.3",
-    "markdown-it-task-lists": "^2.1.1",
     "markdown-it": "^13.0.1",
+    "markdown-it-task-lists": "^2.1.1",
     "prettier": "^3.0.2",
     "sass": "^1.65.1",
     "segment": "^0.1.3",
-    "sitemap": "^7.1.1",
-    "vitepress": "^1.0.0-beta.6"
+    "vitepress": "^1.0.0-rc.4"
   }
 }

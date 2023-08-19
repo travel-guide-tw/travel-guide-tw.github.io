@@ -1,16 +1,14 @@
 import { defineConfig } from 'vitepress'
 import * as dotenv from 'dotenv'
-import { createWriteStream } from 'node:fs'
-import { resolve } from 'node:path'
-import { SitemapStream } from 'sitemap'
+
+// @ts-ignore
+import taskList from 'markdown-it-task-lists'
 
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
 
 dotenv.config()
-
-const links: { lastmod?: number; url: string }[] = []
 
 export default defineConfig({
   base: '/',
@@ -46,22 +44,8 @@ export default defineConfig({
   },
   title: '台灣開源旅遊指南',
   rewrites: generateRewrites(),
-  transformHtml: (_, id, { pageData: { relativePath, lastUpdated } }) => {
-    if (!/[\\/]404\.html$/.test(id))
-      links.push({
-        url: relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: lastUpdated,
-      })
-  },
-  buildEnd: async ({ outDir }) => {
-    const sitemap = new SitemapStream({
-      hostname: 'https://travel-guide-tw.github.io/',
-    })
-    const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
-    sitemap.pipe(writeStream)
-    links.forEach((link) => sitemap.write(link))
-    sitemap.end()
-    await new Promise((r) => writeStream.on('finish', r))
+  sitemap: {
+    hostname: 'https://travel-guide-tw.github.io/',
   },
   lastUpdated: true,
   async transformPageData({ relativePath, title, ...rest }) {
@@ -78,7 +62,7 @@ export default defineConfig({
   cleanUrls: true,
   markdown: {
     config: (md) => {
-      md.use(require('markdown-it-task-lists'))
+      md.use(taskList)
     },
   },
 })
