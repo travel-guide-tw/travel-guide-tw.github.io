@@ -22,8 +22,14 @@
 <script lang="ts" setup>
 import Giscus from '@giscus/vue'
 import { useRoute } from 'vitepress'
+import { onMounted, ref } from 'vue'
 
-const shown = location.hostname === 'travel-guide-tw.github.io'
+const shown = ref(false)
+
+onMounted(() => {
+  shown.value = location?.hostname === 'travel-guide-tw.github.io'
+})
+
 const route = useRoute()
 </script>
 
