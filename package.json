@@ -27,7 +27,7 @@
   "devDependencies": {
     "@giscus/vue": "^3.0.0",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.11.20",
+    "@types/node": "^20.14.2",
     "dotenv": "^16.4.5",
     "glob": "^10.3.10",
     "husky": "^8.0.3",
