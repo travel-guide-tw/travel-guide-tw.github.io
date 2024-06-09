@@ -3,12 +3,12 @@ import * as dotenv from 'dotenv'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
+// @ts-ignore
+import linkPreview from 'markdown-it-link-preview'
 
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
-
-dotenv.config()
 
 export default defineConfig({
   base: '/',
@@ -18,9 +18,8 @@ export default defineConfig({
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
-      pattern: ({ filePath }) => {
-        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${filePath}`
-      },
+      pattern: ({ filePath }) =>
+        `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${filePath}`,
       text: 'Edit this page on GitHub',
     },
     search: {
@@ -52,8 +51,6 @@ export default defineConfig({
   srcDir: 'docs',
   cleanUrls: true,
   markdown: {
-    config: (md) => {
-      md.use(taskList)
-    },
+    config: (md) => md.use(taskList).use(linkPreview),
   },
 })

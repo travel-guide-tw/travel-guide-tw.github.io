@@ -12,5 +12,6 @@
 
 ## 連結
 
-- [REPO](https://github.com/travel-guide-tw/travel-guide-tw.github.io)
-- [ISSUE](https://github.com/travel-guide-tw/travel-guide-tw.github.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+### GitHub
+
+[@preview](https://github.com/travel-guide-tw/travel-guide-tw.github.io)
