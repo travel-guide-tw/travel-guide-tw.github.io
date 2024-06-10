@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress'
-import * as dotenv from 'dotenv'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
@@ -8,12 +7,11 @@ import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
 
-dotenv.config()
+import pkg from '../package.json'
 
 export default defineConfig({
   base: '/',
-  description:
-    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
+  description: pkg.description,
   head: gtagHead,
   themeConfig: {
     sidebar: generateSidebar(),
@@ -33,7 +31,7 @@ export default defineConfig({
       },
     ],
   },
-  title: '台灣開源旅遊指南',
+  title: '開源旅遊指南',
   rewrites: generateRewrites(),
   sitemap: {
     hostname: 'https://travel-guide-tw.github.io/',
