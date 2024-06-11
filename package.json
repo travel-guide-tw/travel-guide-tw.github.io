@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "correct": "autocorrect --fix",
     "dev": "vitepress dev ./",
     "build": "vitepress build ./",
     "check": "npx prettier --check .",
@@ -28,6 +29,7 @@
     "@giscus/vue": "^3.0.0",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.14.2",
+    "autocorrect-node": "^2.10.0",
     "dotenv": "^16.4.5",
     "glob": "^10.4.1",
     "husky": "^8.0.3",
