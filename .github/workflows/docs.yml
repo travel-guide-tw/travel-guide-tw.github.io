@@ -25,8 +25,10 @@ jobs:
       - run: npm ci
 
       - name: 'Create env file'
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
+        run: echo "${{ secrets.ENV_FILE }}" > .env
+
+      - name: 'CONTRIBUTING.md'
+        run: cp CONTRIBUTING.md docs/開發貢獻說明.md
 
       - name: Build VitePress site
         run: npm run build
