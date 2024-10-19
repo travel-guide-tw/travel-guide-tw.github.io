@@ -31,7 +31,7 @@ export default defineConfig({
       },
     ],
   },
-  title: '開源旅遊指南',
+  title: '開源旅遊共筆',
   rewrites: generateRewrites(),
   sitemap: {
     hostname: 'https://travel-guide-tw.github.io/',

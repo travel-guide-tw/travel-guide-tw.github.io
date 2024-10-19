@@ -17,7 +17,25 @@
     "url": "git+https://github.com/travel-guide-tw/travel.git"
   },
   "keywords": [
-    "旅遊"
+    "旅遊",
+    "資訊",
+    "收集",
+    "開源",
+    "專案",
+    "github",
+    "旅遊指南",
+    "旅遊資訊",
+    "旅遊資訊收集",
+    "旅遊資訊收集專案",
+    "旅遊資訊收集開源專案",
+    "旅遊共筆",
+    "旅遊資訊共筆",
+    "travel",
+    "travel-guide-tw",
+    "travel-guide",
+    "travel-guide-tw",
+    "open-source",
+    "vitepress"
   ],
   "author": "travel-guide-tw",
   "license": "MIT",

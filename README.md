@@ -1,10 +1,10 @@
-# 開源旅遊指南
+# 開源旅遊共筆
 
 專門給旅遊資訊收集開源專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論
 
 ## 網站連結
 
-[開源旅遊指南](https://travel-guide-tw.github.io/)
+[開源旅遊共筆](https://travel-guide-tw.github.io/)
 
 ## 專案目的
 
