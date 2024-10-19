@@ -41,7 +41,7 @@ export default function generateSidebar() {
             items.find(
               (child) => typeof child === 'object' && child.text === array[i],
             ) as DefaultTheme.SidebarMulti
-          ).items
+          ).items as DefaultTheme.SidebarItem[]
         }
 
         if (text === 'index.md') {
