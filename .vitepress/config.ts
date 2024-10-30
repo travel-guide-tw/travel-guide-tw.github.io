@@ -12,6 +12,7 @@ import pkg from '../package.json'
 export default defineConfig({
   base: '/',
   description: pkg.description,
+  lang: 'zh-Hant-TW',
   head: gtagHead,
   themeConfig: {
     sidebar: generateSidebar(),
