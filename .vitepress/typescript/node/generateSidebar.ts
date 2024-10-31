@@ -72,5 +72,8 @@ export default function generateSidebar() {
       }),
     )
 
-  return sidebar
+  return sidebar.toSpliced(1, 0, {
+    text: '開發貢獻說明',
+    link: 'CONTRIBUTING.md',
+  })
 }

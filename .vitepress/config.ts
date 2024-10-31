@@ -18,7 +18,7 @@ export default defineConfig({
     sidebar: generateSidebar(),
     editLink: {
       pattern: ({ filePath }) => {
-        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${filePath}`
+        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/${filePath}`
       },
       text: 'Edit this page on GitHub',
     },
@@ -48,7 +48,7 @@ export default defineConfig({
       title: routes.join(' -> '),
     }
   },
-  srcDir: 'docs',
+  srcDir: '.',
   cleanUrls: true,
   markdown: {
     config: (md) => {
