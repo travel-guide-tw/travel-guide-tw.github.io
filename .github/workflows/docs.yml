@@ -20,15 +20,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
       - run: npm ci
 
       - name: 'Create env file'
         run: echo "${{ secrets.ENV_FILE }}" > .env
-
-      - name: 'CONTRIBUTING.md'
-        run: cp CONTRIBUTING.md docs/開發貢獻說明.md
 
       - name: Build VitePress site
         run: npm run build
