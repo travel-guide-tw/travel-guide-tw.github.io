@@ -48,7 +48,7 @@
     "@types/glob": "^8.1.0",
     "@types/node": "^22.9.0",
     "autocorrect-node": "^2.13.0",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "glob": "^11.0.0",
     "husky": "^8.0.3",
     "markdown-it": "^14.1.0",
