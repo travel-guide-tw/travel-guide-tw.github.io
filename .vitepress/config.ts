@@ -52,7 +52,7 @@ export default defineConfig({
   cleanUrls: true,
   markdown: {
     image: {
-      lazyLoading: true
+      lazyLoading: true,
     },
     config: (md) => {
       md.use(taskList)
