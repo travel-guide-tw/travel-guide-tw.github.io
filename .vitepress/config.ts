@@ -51,6 +51,9 @@ export default defineConfig({
   srcDir: '.',
   cleanUrls: true,
   markdown: {
+    image: {
+      lazyLoading: true,
+    },
     config: (md) => {
       md.use(taskList)
     },
