@@ -63,7 +63,7 @@ export default defineConfig({
   },
   async transformHead({ content, head, pageData }) {
     const $ = cheerio.load(content)
-    const title = $('h1').text().trim().replace(' ','') // trim a regular space
+    const title = $('h1').text().trim().replace(' ', '') // trim a regular space
     const image =
       $('img')?.attr('src') ||
       'https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a'
@@ -75,7 +75,9 @@ export default defineConfig({
       'meta',
       {
         property: 'og:url',
-        content: hostname + pageData.relativePath.replace('.md', '').replace('index', ''),
+        content:
+          hostname +
+          pageData.relativePath.replace('.md', '').replace('index', ''),
       },
     ])
 
