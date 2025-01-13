@@ -6,8 +6,11 @@ import taskList from 'markdown-it-task-lists'
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
+import * as cheerio from 'cheerio'
 
 import pkg from '../package.json'
+
+const hostname = 'https://travel-guide-tw.github.io/'
 
 export default defineConfig({
   base: '/',
@@ -35,7 +38,7 @@ export default defineConfig({
   title: '開源旅遊共筆',
   rewrites: generateRewrites(),
   sitemap: {
-    hostname: 'https://travel-guide-tw.github.io/',
+    hostname,
   },
   lastUpdated: true,
   async transformPageData({ relativePath, title, ...rest }) {
@@ -57,5 +60,25 @@ export default defineConfig({
     config: (md) => {
       md.use(taskList)
     },
+  },
+  async transformHead({ content, head, pageData }) {
+    const $ = cheerio.load(content)
+    const title = $('h1').text().trim().replace(' ','') // trim a regular space
+    const image =
+      $('img')?.attr('src') ||
+      'https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a'
+
+    head.push(['meta', { property: 'og:title', content: title }])
+    head.push(['meta', { property: 'og:type', content: 'article' }])
+    head.push(['meta', { property: 'og:image', content: image }])
+    head.push([
+      'meta',
+      {
+        property: 'og:url',
+        content: hostname + pageData.relativePath.replace('.md', '').replace('index', ''),
+      },
+    ])
+
+    return head
   },
 })
