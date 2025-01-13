@@ -17,7 +17,7 @@ export default defineConfig({
   base: '/',
   description: pkg.description,
   lang: 'zh-Hant-TW',
-  head: [['meta', { property: 'og:site_name', content: title }],...gtagHead],
+  head: [['meta', { property: 'og:site_name', content: title }], ...gtagHead],
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
