@@ -11,12 +11,13 @@ import * as cheerio from 'cheerio'
 import pkg from '../package.json'
 
 const hostname = 'https://travel-guide-tw.github.io/'
+const title = '開源旅遊共筆'
 
 export default defineConfig({
   base: '/',
   description: pkg.description,
   lang: 'zh-Hant-TW',
-  head: gtagHead,
+  head: [['meta', { property: 'og:site_name', content: title }], ...gtagHead],
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
@@ -35,7 +36,7 @@ export default defineConfig({
       },
     ],
   },
-  title: '開源旅遊共筆',
+  title,
   rewrites: generateRewrites(),
   sitemap: {
     hostname,
@@ -63,12 +64,12 @@ export default defineConfig({
   },
   async transformHead({ content, head, pageData }) {
     const $ = cheerio.load(content)
-    const title = $('h1').text().trim().replace(' ', '') // trim a regular space
+    const pageTitle = $('h1').text().trim().replace(' ', '') // trim a regular space
     const image =
       $('img')?.attr('src') ||
       'https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a'
 
-    head.push(['meta', { property: 'og:title', content: title }])
+    head.push(['meta', { property: 'og:title', content: pageTitle }])
     head.push(['meta', { property: 'og:type', content: 'article' }])
     head.push(['meta', { property: 'og:image', content: image }])
     head.push([
