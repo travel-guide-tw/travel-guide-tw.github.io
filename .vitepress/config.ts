@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress'
+import fs from 'fs/promises'
+
+import * as cheerio from 'cheerio'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
@@ -6,7 +9,6 @@ import taskList from 'markdown-it-task-lists'
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
-import * as cheerio from 'cheerio'
 
 import pkg from '../package.json'
 
@@ -81,6 +83,21 @@ export default defineConfig({
           pageData.relativePath.replace('.md', '').replace('index', ''),
       },
     ])
+
+    try {
+      const fileContent = await fs.readFile(
+        pageData.filePath.replace('.md', '.schema.json'),
+        'utf-8',
+      )
+
+      head.push([
+        'script',
+        {
+          type: 'application/ld+json',
+        },
+        fileContent,
+      ])
+    } catch (e) {}
 
     return head
   },
