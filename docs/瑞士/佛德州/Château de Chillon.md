@@ -18,7 +18,7 @@
 
 ## 地圖
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.7396810716314!2d6.924917476096696!3d46.4142167695536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e9a5baedd65c3%3A0x22994259155c8307!2sChillon%20Castle!5e0!3m2!1sen!2stw!4v1690740394704!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.7396810716314!2d6.924917476096696!3d46.4142167695536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e9a5baedd65c3%3A0x22994259155c8307!2sChillon%20Castle!5e0!3m2!1sen!2stw!4v1690740394704!5m2!1sen!2stw" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ### 相關連結
 

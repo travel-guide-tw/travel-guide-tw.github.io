@@ -1,0 +1,18 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "行前準備清單",
+  "description": "這篇文章提供旅行者行前準備的必需品和可選物品清單，包括護照、旅行證件、衣物等。",
+  "author": {
+    "@type": "Organization",
+    "name": "開源旅遊共筆"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "開源旅遊共筆"
+  },
+  "datePublished": "2025-01-20",
+  "mainEntityOfPage": "https://travel-guide-tw.github.io/%E6%97%85%E9%81%8A%E9%A0%88%E7%9F%A5/%E8%A1%8C%E5%89%8D%E6%BA%96%E5%82%99%E6%B8%85%E5%96%AE",
+  "articleSection": "旅遊須知",
+  "keywords": "行前準備，旅行清單，旅行物品"
+}

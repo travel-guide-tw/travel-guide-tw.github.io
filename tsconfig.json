@@ -19,6 +19,15 @@
     "types": ["vite/client", "@types/node", "@vue/runtime-core"],
     "lib": ["esnext", "dom"]
   },
-  "include": [".vitepress/config.ts", ".vitepress/typescript"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".vitepress/**/*.ts",
+    "docs/**/*.ts",
+    "docs/**/*.vue",
+    "**/*.md",
+    "docs/日本/山梨/活動/攀登富士山.ts"
+  ],
+  "exclude": ["node_modules"],
+  "vueCompilerOptions": {
+    "vitePressExtensions": [".md"]
+  }
 }
