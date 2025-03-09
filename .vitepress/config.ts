@@ -37,6 +37,16 @@ export default defineConfig({
         link: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
       },
     ],
+    footer: {
+      message: `
+        本網站內容採用 
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 
+        授權，禁止商業用途，使用時請標明來源。<br />
+        原始碼遵循 
+        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0 授權</a>。
+      `,
+      copyright: `© ${new Date().getFullYear()} Travel Guide TW. 版權所有。`,
+    },
   },
   title,
   rewrites: generateRewrites(),

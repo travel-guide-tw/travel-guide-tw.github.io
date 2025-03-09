@@ -38,7 +38,7 @@
     "vitepress"
   ],
   "author": "travel-guide-tw",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/travel-guide-tw/travel/issues"
   },
