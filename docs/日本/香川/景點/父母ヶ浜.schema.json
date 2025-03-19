@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "父母ヶ浜",
+  "description": "父母ヶ浜是位於日本香川縣三豐市的海灘。它以其在退潮時形成的鏡面效果而聞名，倒映出天空的景色，被譽為「日本的烏尤尼鹽沼」。",
+  "keywords": [
+    "父母ヶ浜",
+    "香川景點",
+    "三豐市",
+    "海灘",
+    "鏡面海灘",
+    "烏尤尼鹽沼",
+    "攝影景點"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E7%88%B6%E6%AF%8D%E3%83%B6%E6%B5%9C",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "三豐市仁尾町"
+  }
+}

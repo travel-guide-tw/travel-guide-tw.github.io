@@ -1,0 +1,21 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LandmarksOrHistoricalBuildings",
+  "name": "岡山城",
+  "description": "岡山城是位於日本岡山縣岡山市的城堡。由於其黑色的外觀，也被稱為「烏城（うじょう）」。",
+  "keywords": [
+    "岡山城",
+    "烏城",
+    "岡山景點",
+    "岡山市",
+    "城堡"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%B2%A1%E5%B1%B1/%E6%99%AF%E9%BB%9E/%E5%B2%A1%E5%B1%B1%E5%9F%8E",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "岡山縣",
+    "addressLocality": "岡山市北區丸之內 2 丁目 3-1"
+  }
+}

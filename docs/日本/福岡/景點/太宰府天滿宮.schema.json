@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LandmarksOrHistoricalBuildings",
+  "name": "太宰府天滿宮",
+  "description": "太宰府天滿宮是位於日本福岡縣太宰府市的神社。它是日本最重要的天滿宮之一，供奉著學問之神菅原道真。",
+  "keywords": [
+    "太宰府天滿宮",
+    "福岡景點",
+    "太宰府市",
+    "神社",
+    "菅原道真",
+    "學問之神"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A6%8F%E5%B2%A1/%E6%99%AF%E9%BB%9E/%E5%A4%AA%E5%AE%B0%E5%BA%9C%E5%A4%A9%E6%BB%BF%E5%AE%AE",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福岡縣",
+    "addressLocality": "太宰府市宰府 4 丁目 7-1"
+  }
+}

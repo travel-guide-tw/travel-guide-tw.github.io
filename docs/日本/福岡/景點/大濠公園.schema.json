@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Park",
+  "name": "大濠公園",
+  "description": "大濠公園是位於日本福岡市中央區的公園。它以其美麗的湖泊、日式庭園和慢跑道而聞名，是市民休閒放鬆的場所。",
+  "keywords": [
+    "大濠公園",
+    "福岡景點",
+    "福岡市",
+    "中央區",
+    "公園",
+    "湖泊",
+    "日式庭園"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A6%8F%E5%B2%A1/%E6%99%AF%E9%BB%9E/%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福岡縣",
+    "addressLocality": "福岡市中央區大濠公園 1"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "金刀比羅宮",
+  "description": "金刀比羅宮，又稱金毘羅さん，是位於日本香川縣的一個著名神社。以其長長的石階而聞名，參拜者需要攀登 785 階才能到達主殿，如果算上奧社則需要攀登 1368 階。",
+  "keywords": [
+    "金刀比羅宮",
+    "金毘羅宮",
+    "香川景點",
+    "神社",
+    "石階",
+    "日本文化"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E9%87%91%E5%88%80%E6%AF%94%E7%BE%85%E5%AE%AE",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "仲多度郡琴平町 892-1"
+  }
+}
