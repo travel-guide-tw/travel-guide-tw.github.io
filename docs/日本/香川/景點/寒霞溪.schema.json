@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "寒霞溪",
+  "description": "寒霞溪是位於日本香川縣小豆島的一個峽谷。它是瀨戶內海國立公園的一部分，以其壯麗的景色、奇特的岩石構造和秋季的紅葉而聞名。",
+  "keywords": [
+    "寒霞溪",
+    "香川景點",
+    "小豆島",
+    "峽谷",
+    "瀨戶內海國立公園",
+    "紅葉"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E5%AF%92%E9%9C%9E%E6%BA%AA",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "小豆郡小豆島町"
+  }
+}

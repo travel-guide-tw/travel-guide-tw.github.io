@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "直島",
+  "description": "直島是位於日本瀨戶內海的一個島嶼，屬於香川縣管轄。以其現代藝術博物館、建築和雕塑而聞名，尤其是草間彌生的南瓜。",
+  "keywords": [
+    "直島",
+    "香川景點",
+    "瀨戶內海",
+    "島嶼",
+    "現代藝術",
+    "草間彌生",
+    "南瓜"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E7%9B%B4%E5%B3%B6",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "香川郡直島町"
+  }
+}

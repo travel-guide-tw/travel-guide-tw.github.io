@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LandmarksOrHistoricalBuildings",
+  "name": "原爆圓頂館",
+  "description": "原爆圓頂館是位於日本廣島市的建築遺址，是廣島和平紀念公園的一部分。它是 1945 年 8 月 6 日原子彈爆炸中少數倖存的建築物之一，作為對核武器毀滅性影響的警示。",
+  "keywords": [
+    "原爆圓頂館",
+    "廣島景點",
+    "廣島市",
+    "廣島和平紀念公園",
+    "原子彈爆炸",
+    "世界遺產"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%BB%A3%E5%B3%B6/%E6%99%AF%E9%BB%9E/%E5%8E%9F%E7%88%86%E5%9C%93%E9%A0%82%E9%A4%A8",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "廣島縣",
+    "addressLocality": "廣島市中區大手町 1 丁目"
+  }
+}

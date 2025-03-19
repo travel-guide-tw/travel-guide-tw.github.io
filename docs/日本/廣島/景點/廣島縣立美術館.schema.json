@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Museum",
+  "name": "廣島縣立美術館",
+  "description": "廣島縣立美術館是位於日本廣島市的博物館，收藏了廣島縣及國內外的藝術作品。",
+  "keywords": ["廣島縣立美術館", "廣島景點", "廣島市", "美術館"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%BB%A3%E5%B3%B6/%E6%99%AF%E9%BB%9E/%E5%BB%A3%E5%B3%B6%E7%B8%A3%E7%AB%8B%E7%BE%8E%E8%A1%93%E9%A4%A8",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "廣島縣",
+    "addressLocality": "廣島市中區"
+  }
+}
