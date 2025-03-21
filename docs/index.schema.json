@@ -1,0 +1,47 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "travel-open-source",
+  "version": "1.0.0",
+  "description": "開源的旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
+  "keywords": [
+    "旅遊",
+    "資訊",
+    "收集",
+    "開源",
+    "專案",
+    "github",
+    "旅遊指南",
+    "旅遊資訊",
+    "旅遊資訊收集",
+    "旅遊資訊收集專案",
+    "旅遊資訊收集開源專案",
+    "旅遊共筆",
+    "旅遊資訊共筆",
+    "travel",
+    "travel-guide-tw",
+    "travel-guide",
+    "travel-guide-tw",
+    "open-source",
+    "vitepress"
+  ],
+  "author": "travel-guide-tw",
+  "license": "Apache-2.0",
+  "codeRepository": {
+    "type": "git",
+    "url": "git+https://github.com/travel-guide-tw/travel.git"
+  },
+  "issueTracker": {
+    "url": "https://github.com/travel-guide-tw/travel/issues"
+  },
+  "url": "https://github.com/travel-guide-tw/travel#readme",
+  "inLanguage": "zh-TW",
+  "features": [
+    "開源協作：任何人都可以提交 PR 來擴充或修正資訊",
+    "定期更新：透過社群協作，確保資訊的時效性",
+    "多語言支援：未來將支援多種語言，方便不同地區的旅客",
+    "豐富的內容：涵蓋各國的景點、交通、住宿、美食等資訊",
+    "實用的工具：提供行程規劃、預算估算等工具，方便旅客安排行程",
+    "社群互動：建立討論區，讓旅客可以分享經驗、交流心得"
+  ]
+}
