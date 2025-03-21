@@ -35,6 +35,10 @@
     "url": "https://github.com/travel-guide-tw/travel/issues"
   },
   "url": "https://github.com/travel-guide-tw/travel#readme",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://user-attachments.githubusercontent.com/assets/c0d2f761-819b-43df-8e7e-b45db22f268a"
+  },
   "inLanguage": "zh-TW",
   "features": [
     "開源協作：任何人都可以提交 PR 來擴充或修正資訊",
