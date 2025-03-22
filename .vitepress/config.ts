@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import fs from 'fs/promises'
 
 import * as cheerio from 'cheerio'
@@ -17,7 +17,7 @@ import pkg from '../package.json'
 const hostname = 'https://travel-guide-tw.github.io/'
 const title = '開源旅遊共筆'
 
-export default defineConfig({
+export default withMermaid({
   base: '/',
   description: pkg.description,
   lang: 'zh-Hant-TW',
@@ -25,7 +25,7 @@ export default defineConfig({
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
-      pattern: ({ filePath }) => {
+      pattern: ({ filePath }: { filePath: string }) => {
         return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/${filePath}`
       },
       text: 'Edit this page on GitHub',
@@ -75,6 +75,10 @@ export default defineConfig({
     image: {
       lazyLoading: true,
     },
+  },
+  mermaid: {},
+  mermaidPlugin: {
+    class: 'mermaid',
   },
   async transformHead({ content, head, pageData }) {
     const $ = cheerio.load(content)
