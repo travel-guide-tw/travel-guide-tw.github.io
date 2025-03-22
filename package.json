@@ -33,12 +33,10 @@
     "husky": "^8.0.3",
     "markdown-it": "^14.1.0",
     "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-link-preview": "^1.1.4",
     "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "segment": "^0.1.3",
-    "vitepress": "^1.2.3"
-  },
-  "dependencies": {
-    "markdown-it-link-preview": "^1.1.4"
+    "vitepress": "^v2.0.0-alpha.4"
   }
 }
