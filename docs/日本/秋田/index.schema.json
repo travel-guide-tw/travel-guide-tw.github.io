@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "秋田",
+  "description": "秋田縣位於日本東北地區，以其豐富的自然景觀、悠久的歷史文化和獨特的傳統工藝而聞名。這裡有被譽為日本秘湯的乳頭溫泉鄉，也有壯麗的雪國風光，吸引著無數遊客。",
+  "keywords": [
+    "秋田",
+    "秋田景點",
+    "秋田旅遊",
+    "秘湯",
+    "雪國",
+    "自然"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A7%8B%E7%94%B0",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "秋田縣",
+    "addressLocality": "秋田市"
+  },
+  "knowsAbout": [
+    {"@type": "Resort", "name": "乳頭溫泉鄉"}
+  ]
+}

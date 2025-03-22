@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "岡山",
+  "description": "岡山縣位於日本中國地區，以其溫暖的氣候和晴朗的天氣而聞名，因此有「晴天之國」的美譽。除了宜人的氣候，岡山縣還擁有豐富的歷史文化和美麗的自然風光，吸引著眾多遊客。",
+  "keywords": [
+    "岡山",
+    "岡山景點",
+    "岡山旅遊",
+    "晴天之國",
+    "歷史",
+    "文化"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%B2%A1%E5%B1%B1",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "岡山縣",
+    "addressLocality": "岡山市"
+  },
+  "knowsAbout": [
+    {"@type": "LandmarksOrHistoricalBuildings", "name": "岡山城"},
+    {"@type": "Garden", "name": "後樂園"},
+    {"@type": "Place", "name": "倉敷美觀地區"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Island",
+  "name": "北海道",
+  "description": "北海道是日本第二大島，也是最北端的行政區，以其壯麗的自然風光、豐富的戶外活動和美味的海鮮而聞名。",
+  "keywords": [
+    "北海道",
+    "北海道景點",
+    "北海道旅遊",
+    "自然風光",
+    "戶外活動",
+    "海鮮"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%8C%97%E6%B5%B7%E9%81%93",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "北海道",
+    "addressLocality": "札幌市"
+  },
+  "knowsAbout": [
+    {"@type": "Mountain", "name": "函館山"},
+    {"@type": "Zoo", "name": "旭山動物園"},
+    {"@type": "Park", "name": "大沼國定公園"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "富山",
+  "description": "富山縣位於日本中部地區，以其壯麗的自然風光和豐富的水資源而聞名。這裡有雄偉的立山連峰、美麗的海岸線和清澈的河流，吸引著眾多遊客。",
+  "keywords": [
+    "富山",
+    "富山景點",
+    "富山旅遊",
+    "立山連峰",
+    "自然風光",
+    "水資源"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%AF%8C%E5%B1%B1",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "富山縣",
+    "addressLocality": "富山市"
+  },
+  "knowsAbout": [
+    {"@type": "Mountain", "name": "立山連峰"},
+    {"@type": "Park", "name": "富岩運河環水公園"},
+    {"@type": "Place", "name": "室堂"}
+  ]
+}
