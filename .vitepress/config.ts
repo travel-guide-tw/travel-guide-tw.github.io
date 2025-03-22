@@ -5,6 +5,8 @@ import * as cheerio from 'cheerio'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
+// @ts-ignore
+import linkPreview from 'markdown-it-link-preview'
 
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
@@ -67,11 +69,11 @@ export default defineConfig({
   srcDir: '.',
   cleanUrls: true,
   markdown: {
+    config: (md) => {
+      md.use(taskList).use(linkPreview)
+    },
     image: {
       lazyLoading: true,
-    },
-    config: (md) => {
-      md.use(taskList)
     },
   },
   async transformHead({ content, head, pageData }) {
