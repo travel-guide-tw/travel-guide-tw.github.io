@@ -1,4 +1,5 @@
-@import 'linkPreview', 'iframe';
+@use 'linkPreview';
+@use 'iframe';
 
 footer.VPFooter {
   // https://github.com/vuejs/vitepress/issues/1037#issuecomment-2182459377
