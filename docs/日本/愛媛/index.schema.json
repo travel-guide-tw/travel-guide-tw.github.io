@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "愛媛",
+  "description": "愛媛縣位於四國地區西北部，以其溫暖的氣候、豐富的自然資源和悠久的歷史文化而聞名。這裡盛產柑橘，因此有「柑橘之鄉」的美譽。同時，愛媛縣也是日本文學的重要發源地，孕育了許多著名的文學家。",
+  "keywords": ["愛媛", "愛媛景點", "愛媛旅遊", "柑橘", "溫泉", "文學"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E6%84%9B%E5%AA%9B",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "愛媛縣",
+    "addressLocality": "松山市"
+  },
+  "knowsAbout": [
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "道後溫泉" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "松山城" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "宇和島城" }
+  ]
+}

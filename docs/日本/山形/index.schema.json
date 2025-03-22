@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "山形",
+  "description": "山形縣位於日本東北地區，以其豐富的自然景觀和獨特的文化魅力而聞名。從壯麗的山脈到古老的溫泉，山形縣為遊客提供了多樣化的旅遊體驗。",
+  "keywords": ["山形", "山形景點", "山形旅遊", "自然", "文化", "溫泉"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%B1%B1%E5%BD%A2",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "山形縣",
+    "addressLocality": "山形市"
+  },
+  "knowsAbout": [
+    { "@type": "Mountain", "name": "藏王地區" },
+    { "@type": "TouristAttraction", "name": "銀山溫泉" },
+    { "@type": "Place", "name": "立石寺" }
+  ]
+}

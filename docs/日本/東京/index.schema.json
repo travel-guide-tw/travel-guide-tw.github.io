@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "東京",
+  "description": "東京是日本的首都，也是世界上人口最多的都市之一。這座城市融合了現代化的摩天大樓和傳統的寺廟神社，展現出獨特的魅力。",
+  "keywords": ["東京", "東京景點", "東京旅遊", "現代", "傳統", "交通"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E6%9D%B1%E4%BA%AC",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "東京都",
+    "addressLocality": "東京都"
+  },
+  "knowsAbout": [
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "淺草寺" },
+    { "@type": "Park", "name": "新宿御苑" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "東京晴空塔" }
+  ]
+}
