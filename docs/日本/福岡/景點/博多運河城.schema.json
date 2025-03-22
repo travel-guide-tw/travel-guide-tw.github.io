@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ShoppingCenter",
+  "name": "博多運河城",
+  "description": "博多運河城是位於日本福岡市博多區的大型複合商業設施。它以其獨特的運河設計、購物中心、餐廳、酒店、劇場和娛樂設施而聞名。",
+  "keywords": [
+    "博多運河城",
+    "福岡景點",
+    "福岡市",
+    "博多區",
+    "購物中心",
+    "運河"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A6%8F%E5%B2%A1/%E6%99%AF%E9%BB%9E/%E5%8D%9A%E5%A4%9A%E9%81%8B%E6%B2%B3%E5%9F%8E",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福岡縣",
+    "addressLocality": "福岡市博多區住吉 1 丁目 2"
+  }
+}

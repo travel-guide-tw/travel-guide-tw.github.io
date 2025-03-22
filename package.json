@@ -1,10 +1,11 @@
 {
-  "name": "travel",
+  "name": "travel-open-source",
   "version": "1.0.0",
-  "description": "專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
+  "description": "開源的旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論",
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "correct": "autocorrect --fix",
     "dev": "vitepress dev ./",
     "build": "vitepress build ./",
     "check": "npx prettier --check .",
@@ -16,26 +17,46 @@
     "url": "git+https://github.com/travel-guide-tw/travel.git"
   },
   "keywords": [
-    "旅遊"
+    "旅遊",
+    "資訊",
+    "收集",
+    "開源",
+    "專案",
+    "github",
+    "旅遊指南",
+    "旅遊資訊",
+    "旅遊資訊收集",
+    "旅遊資訊收集專案",
+    "旅遊資訊收集開源專案",
+    "旅遊共筆",
+    "旅遊資訊共筆",
+    "travel",
+    "travel-guide-tw",
+    "travel-guide",
+    "travel-guide-tw",
+    "open-source",
+    "vitepress"
   ],
   "author": "travel-guide-tw",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/travel-guide-tw/travel/issues"
   },
   "homepage": "https://github.com/travel-guide-tw/travel#readme",
   "devDependencies": {
-    "@giscus/vue": "^3.0.0",
+    "@giscus/vue": "^3.1.1",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.14.2",
-    "dotenv": "^16.4.5",
-    "glob": "^10.4.1",
+    "@types/node": "^22.10.10",
+    "autocorrect-node": "^2.13.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "glob": "^11.0.1",
     "husky": "^8.0.3",
     "markdown-it": "^14.1.0",
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-link-preview": "^1.1.4",
-    "prettier": "^3.2.5",
-    "sass": "^1.72.0",
+    "prettier": "^3.5.3",
+    "sass": "^1.83.4",
     "segment": "^0.1.3",
     "vitepress": "^v2.0.0-alpha.4"
   }

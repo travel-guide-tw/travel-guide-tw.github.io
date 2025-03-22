@@ -41,7 +41,7 @@ export default function generateSidebar() {
             items.find(
               (child) => typeof child === 'object' && child.text === array[i],
             ) as DefaultTheme.SidebarMulti
-          ).items
+          ).items as DefaultTheme.SidebarItem[]
         }
 
         if (text === 'index.md') {
@@ -72,5 +72,8 @@ export default function generateSidebar() {
       }),
     )
 
-  return sidebar
+  return sidebar.toSpliced(1, 0, {
+    text: '開發貢獻說明',
+    link: 'CONTRIBUTING.md',
+  })
 }

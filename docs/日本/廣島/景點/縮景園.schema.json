@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Garden",
+  "name": "縮景園",
+  "description": "縮景園是位於日本廣島市的日式庭園。它由淺野長晟於 1620 年建造，以其精美的景觀和微縮景觀而聞名，代表了日本各地的著名景點。",
+  "keywords": ["縮景園", "廣島景點", "廣島市", "日式庭園", "微縮景觀"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%BB%A3%E5%B3%B6/%E6%99%AF%E9%BB%9E/%E7%B8%AE%E6%99%AF%E5%9C%92",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "廣島縣",
+    "addressLocality": "廣島市東區二葉之里 3 丁目"
+  }
+}

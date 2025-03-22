@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "山梨",
+  "description": "山梨縣位於日本中部，以雄偉的富士山和美麗的富士五湖而聞名。除了壯麗的自然風光，山梨縣還擁有豐富的歷史文化和多樣的戶外活動，吸引著來自世界各地的遊客。",
+  "keywords": [
+    "山梨",
+    "山梨景點",
+    "山梨旅遊",
+    "富士山",
+    "富士五湖",
+    "自然風光"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%B1%B1%E6%A2%A8",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "山梨縣",
+    "addressLocality": "富士吉田市"
+  },
+  "knowsAbout": [
+    { "@type": "Mountain", "name": "富士山" },
+    { "@type": "Lake", "name": "河口湖" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "新倉富士淺間神社" }
+  ]
+}

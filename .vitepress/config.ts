@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
-import * as dotenv from 'dotenv'
+import fs from 'fs/promises'
+
+import * as cheerio from 'cheerio'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
@@ -10,16 +12,22 @@ import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
 
+import pkg from '../package.json'
+
+const hostname = 'https://travel-guide-tw.github.io/'
+const title = '開源旅遊共筆'
+
 export default defineConfig({
   base: '/',
-  description:
-    '專門給台灣人國內外旅遊資訊收集專案，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論',
-  head: gtagHead,
+  description: pkg.description,
+  lang: 'zh-Hant-TW',
+  head: [['meta', { property: 'og:site_name', content: title }], ...gtagHead],
   themeConfig: {
     sidebar: generateSidebar(),
     editLink: {
-      pattern: ({ filePath }) =>
-        `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/docs/${filePath}`,
+      pattern: ({ filePath }) => {
+        return `https://github.com/travel-guide-tw/travel-guide-tw.github.io/edit/main/${filePath}`
+      },
       text: 'Edit this page on GitHub',
     },
     search: {
@@ -31,11 +39,21 @@ export default defineConfig({
         link: 'https://github.com/travel-guide-tw/travel-guide-tw.github.io/',
       },
     ],
+    footer: {
+      message: `
+        本網站內容採用 
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 
+        授權，禁止商業用途，使用時請標明來源。<br />
+        原始碼遵循 
+        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0 授權</a>。
+      `,
+      copyright: `© ${new Date().getFullYear()} Travel Guide TW. 版權所有。`,
+    },
   },
-  title: '台灣開源旅遊指南',
+  title,
   rewrites: generateRewrites(),
   sitemap: {
-    hostname: 'https://travel-guide-tw.github.io/',
+    hostname,
   },
   lastUpdated: true,
   async transformPageData({ relativePath, title, ...rest }) {
@@ -48,9 +66,51 @@ export default defineConfig({
       title: routes.join(' -> '),
     }
   },
-  srcDir: 'docs',
+  srcDir: '.',
   cleanUrls: true,
   markdown: {
-    config: (md) => md.use(taskList).use(linkPreview),
+    config: (md) => {
+      md.use(taskList).use(linkPreview)
+    },
+    image: {
+      lazyLoading: true,
+    },
+  },
+  async transformHead({ content, head, pageData }) {
+    const $ = cheerio.load(content)
+    const pageTitle = $('h1').text().trim().replace(' ', '') // trim a regular space
+    const image =
+      $('img')?.attr('src') ||
+      'https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a'
+
+    head.push(['meta', { property: 'og:title', content: pageTitle }])
+    head.push(['meta', { property: 'og:type', content: 'article' }])
+    head.push(['meta', { property: 'og:image', content: image }])
+    head.push([
+      'meta',
+      {
+        property: 'og:url',
+        content:
+          hostname +
+          pageData.relativePath.replace('.md', '').replace('index', ''),
+      },
+    ])
+
+    try {
+      const fileContent = await fs.readFile(
+        pageData.filePath.replace('.md', '.schema.json'),
+        'utf-8',
+      )
+
+      head.push([
+        'script',
+        {
+          type: 'application/ld+json',
+        },
+        fileContent,
+      ])
+    } catch (e) {}
+
+    return head
   },
 })

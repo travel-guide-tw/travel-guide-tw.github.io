@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Island",
+  "name": "小豆島",
+  "description": "小豆島是位於日本瀨戶內海的一個島嶼，屬於香川縣管轄。以其美麗的自然風光、橄欖園、醬油工廠和藝術裝置而聞名。",
+  "keywords": [
+    "小豆島",
+    "香川景點",
+    "瀨戶內海",
+    "島嶼",
+    "橄欖園",
+    "醬油",
+    "藝術"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E5%B0%8F%E8%B1%86%E5%B3%B6",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "小豆郡小豆島町"
+  }
+}

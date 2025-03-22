@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Bridge",
+  "name": "瀨戶大橋",
+  "description": "瀨戶大橋是連接日本本州岡山縣倉敷市和四國香川縣坂出市的橋樑群。它由一系列橋樑組成，橫跨瀨戶內海，是世界最大的橋樑系統之一。",
+  "keywords": [
+    "瀨戶大橋",
+    "香川景點",
+    "岡山景點",
+    "橋樑",
+    "瀨戶內海",
+    "日本建築"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D/%E6%99%AF%E9%BB%9E/%E7%80%A8%E6%88%B8%E5%A4%A7%E6%A9%8B",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "香川縣",
+    "addressLocality": "坂出市"
+  }
+}

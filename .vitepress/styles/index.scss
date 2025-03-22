@@ -1,1 +1,6 @@
 @import 'linkPreview', 'iframe';
+
+footer.VPFooter {
+  // https://github.com/vuejs/vitepress/issues/1037#issuecomment-2182459377
+  display: block !important;
+}
