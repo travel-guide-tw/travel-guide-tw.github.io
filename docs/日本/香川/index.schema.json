@@ -3,14 +3,7 @@
   "@type": "AdministrativeArea",
   "name": "香川",
   "description": "香川縣位於日本四國地區，以其溫暖的氣候和美麗的瀨戶內海而聞名。這裡也是烏龍麵的故鄉，吸引著眾多美食愛好者。",
-  "keywords": [
-    "香川",
-    "香川景點",
-    "香川旅遊",
-    "瀨戶內海",
-    "烏龍麵",
-    "四國"
-  ],
+  "keywords": ["香川", "香川景點", "香川旅遊", "瀨戶內海", "烏龍麵", "四國"],
   "inLanguage": "zh-TW",
   "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%A6%99%E5%B7%9D",
   "address": {
@@ -20,8 +13,8 @@
     "addressLocality": "高松市"
   },
   "knowsAbout": [
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "丸龜城"},
-    {"@type": "Place", "name": "小豆島"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "金刀比羅宮"}
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "丸龜城" },
+    { "@type": "Place", "name": "小豆島" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "金刀比羅宮" }
   ]
 }

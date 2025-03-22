@@ -20,8 +20,8 @@
     "addressLocality": "札幌市"
   },
   "knowsAbout": [
-    {"@type": "Mountain", "name": "函館山"},
-    {"@type": "Zoo", "name": "旭山動物園"},
-    {"@type": "Park", "name": "大沼國定公園"}
+    { "@type": "Mountain", "name": "函館山" },
+    { "@type": "Zoo", "name": "旭山動物園" },
+    { "@type": "Park", "name": "大沼國定公園" }
   ]
 }

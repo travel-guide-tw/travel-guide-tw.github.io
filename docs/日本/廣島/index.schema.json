@@ -3,14 +3,7 @@
   "@type": "AdministrativeArea",
   "name": "廣島",
   "description": "廣島縣位於日本中國地區，面臨瀨戶內海，擁有豐富的歷史文化和美麗的自然風光。廣島因原子彈爆炸而聞名於世，但這座城市在戰後迅速重建，成為一個現代化的都市，同時也致力於推廣世界和平。",
-  "keywords": [
-    "廣島",
-    "廣島景點",
-    "廣島旅遊",
-    "歷史",
-    "和平",
-    "瀨戶內海"
-  ],
+  "keywords": ["廣島", "廣島景點", "廣島旅遊", "歷史", "和平", "瀨戶內海"],
   "inLanguage": "zh-TW",
   "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%BB%A3%E5%B3%B6",
   "address": {
@@ -20,8 +13,8 @@
     "addressLocality": "廣島市"
   },
   "knowsAbout": [
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "原爆圓頂館"},
-    {"@type": "Park", "name": "和平紀念公園"},
-    {"@type": "Place", "name": "宮島（嚴島神社）"}
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "原爆圓頂館" },
+    { "@type": "Park", "name": "和平紀念公園" },
+    { "@type": "Place", "name": "宮島（嚴島神社）" }
   ]
 }

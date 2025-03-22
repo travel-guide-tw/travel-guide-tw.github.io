@@ -21,8 +21,8 @@
     "addressLocality": "奈良市"
   },
   "knowsAbout": [
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "東大寺"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "春日大社"},
-    {"@type": "Park", "name": "奈良公園"}
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "東大寺" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "春日大社" },
+    { "@type": "Park", "name": "奈良公園" }
   ]
 }

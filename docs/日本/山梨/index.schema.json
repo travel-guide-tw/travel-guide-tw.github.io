@@ -20,8 +20,8 @@
     "addressLocality": "富士吉田市"
   },
   "knowsAbout": [
-    {"@type": "Mountain", "name": "富士山"},
-    {"@type": "Lake", "name": "河口湖"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "新倉富士淺間神社"}
+    { "@type": "Mountain", "name": "富士山" },
+    { "@type": "Lake", "name": "河口湖" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "新倉富士淺間神社" }
   ]
 }

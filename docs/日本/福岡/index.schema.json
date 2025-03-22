@@ -3,14 +3,7 @@
   "@type": "AdministrativeArea",
   "name": "福岡",
   "description": "福岡縣位於九州北部，自古以來就是日本與亞洲大陸交流的窗口，擁有豐富的歷史文化和美食。",
-  "keywords": [
-    "福岡",
-    "福岡景點",
-    "福岡旅遊",
-    "九州",
-    "歷史",
-    "美食"
-  ],
+  "keywords": ["福岡", "福岡景點", "福岡旅遊", "九州", "歷史", "美食"],
   "inLanguage": "zh-TW",
   "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A6%8F%E5%B2%A1",
   "address": {
@@ -20,8 +13,8 @@
     "addressLocality": "福岡市"
   },
   "knowsAbout": [
-    {"@type": "Place", "name": "博多運河城"},
-    {"@type": "Park", "name": "大濠公園"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "櫛田神社"}
+    { "@type": "Place", "name": "博多運河城" },
+    { "@type": "Park", "name": "大濠公園" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "櫛田神社" }
   ]
 }

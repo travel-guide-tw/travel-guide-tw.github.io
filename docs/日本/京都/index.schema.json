@@ -3,15 +3,7 @@
   "@type": "City",
   "name": "京都",
   "description": "京都是日本最古老的城市之一，於 794 年被選為日本天皇的所在地，擁有豐富的歷史文化遺產。這座城市以其傳統的寺廟、神社、庭園和藝伎區而聞名，吸引著來自世界各地的遊客。",
-  "keywords": [
-    "京都",
-    "京都景點",
-    "京都旅遊",
-    "寺廟",
-    "神社",
-    "庭園",
-    "藝伎"
-  ],
+  "keywords": ["京都", "京都景點", "京都旅遊", "寺廟", "神社", "庭園", "藝伎"],
   "inLanguage": "zh-TW",
   "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E4%BA%AC%E9%83%BD",
   "address": {
@@ -21,8 +13,8 @@
     "addressLocality": "京都市"
   },
   "knowsAbout": [
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "清水寺"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "金閣寺"},
-    {"@type": "LandmarksOrHistoricalBuildings", "name": "伏見稻荷大社"}
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "清水寺" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "金閣寺" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "伏見稻荷大社" }
   ]
 }
