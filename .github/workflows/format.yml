@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -16,18 +13,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
 
       - name: Run Correct
         run: npm run correct
