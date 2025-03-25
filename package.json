@@ -47,7 +47,7 @@
     "@giscus/vue": "^3.1.1",
     "@types/glob": "^8.1.0",
     "@types/node": "^22.10.10",
-    "autocorrect-node": "^2.13.0",
+    "autocorrect-node": "^2.13.3",
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
     "glob": "^11.0.1",
