@@ -48,7 +48,7 @@
     "@types/glob": "^8.1.0",
     "@types/node": "^22.10.10",
     "autocorrect-node": "^2.14.0",
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.1.2",
     "dotenv": "^16.5.0",
     "glob": "^11.0.1",
     "husky": "^8.0.3",
