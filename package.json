@@ -45,7 +45,7 @@
   "homepage": "https://github.com/travel-guide-tw/travel#readme",
   "devDependencies": {
     "@giscus/vue": "^3.1.1",
-    "@types/glob": "^8.1.0",
+    "@types/glob": "^9.0.0",
     "@types/node": "^22.10.10",
     "autocorrect-node": "^2.14.0",
     "cheerio": "^1.0.0",
