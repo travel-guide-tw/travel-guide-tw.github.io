@@ -5,3 +5,5 @@ cache
 dist
 node_modules
 .qodo
+
+public/json/preview/

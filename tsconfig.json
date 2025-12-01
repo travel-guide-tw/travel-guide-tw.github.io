@@ -21,10 +21,10 @@
   },
   "include": [
     ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue",
     "docs/**/*.ts",
     "docs/**/*.vue",
-    "**/*.md",
-    "docs/日本/山梨/活動/攀登富士山.ts"
+    "**/*.md"
   ],
   "exclude": ["node_modules"],
   "vueCompilerOptions": {

@@ -46,6 +46,7 @@
   "devDependencies": {
     "@giscus/vue": "^3.1.1",
     "@types/glob": "^8.1.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.10.10",
     "autocorrect-node": "^2.14.0",
     "cheerio": "^1.0.0",
@@ -53,9 +54,9 @@
     "glob": "^11.0.3",
     "husky": "^8.0.3",
     "markdown-it": "^14.1.0",
-    "markdown-it-link-preview": "^1.1.4",
     "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^11.6.0",
+    "open-graph-scraper": "^6.10.0",
     "prettier": "^3.5.3",
     "sass": "^1.92.1",
     "segment": "^0.1.3",
