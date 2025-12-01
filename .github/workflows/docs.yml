@@ -27,11 +27,13 @@ jobs:
       - name: 'Create env file'
         run: echo "${{ secrets.ENV_FILE }}" > .env
 
-      - name: Remove .gitignore
-        run: rm .gitignore
-
       - name: Build VitePress site
         run: npm run build
+
+      - name: Copy preview JSON files
+        run: |
+          mkdir -p .vitepress/dist/json/preview
+          cp -r public/json/preview/* .vitepress/dist/json/preview/
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
