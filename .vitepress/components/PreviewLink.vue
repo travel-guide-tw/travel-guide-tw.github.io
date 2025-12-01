@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { OgObject } from 'open-graph-scraper/types/lib/types'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 
 const props = defineProps({
   url: {
@@ -12,15 +12,18 @@ const props = defineProps({
 const url = props.url
 
 const ogData = ref<null | OgObject>(null)
-const imageUrl = ref<string>('')
-const hostname = ref<string>('')
 
-// Extract hostname safely
-try {
-  hostname.value = new URL(url).hostname
-} catch (e) {
-  hostname.value = url
-}
+const imageUrl = computed(() => {
+  return !ogData.value
+    ? ''
+    : (ogData.value.ogImage?.[0] || ogData.value.twitterImage?.[0])?.url || ''
+})
+
+const hostname = computed(() => {
+  return !ogData.value
+    ? ''
+    : ogData.value.ogSiteName || ogData.value.twitterSiteName || url
+})
 
 onMounted(async () => {
   // Fetch the Open Graph data from og data cache json file
@@ -33,38 +36,13 @@ onMounted(async () => {
   if (response.ok) {
     const data = await response.json()
     ogData.value = data[url] || null
-
-    console.log('PreviewLink: OG data for', url, ':', ogData.value)
-
-    if (ogData.value) {
-      // Extract image URL
-      if (
-        ogData.value.ogImage &&
-        Array.isArray(ogData.value.ogImage) &&
-        ogData.value.ogImage.length > 0
-      ) {
-        imageUrl.value = ogData.value.ogImage[0].url || ''
-      } else if (
-        ogData.value.twitterImage &&
-        Array.isArray(ogData.value.twitterImage) &&
-        ogData.value.twitterImage.length > 0
-      ) {
-        imageUrl.value = ogData.value.twitterImage[0].url || ''
-      }
-
-      console.log('PreviewLink: Image URL:', imageUrl.value)
-      console.log('PreviewLink: ogImage:', ogData.value.ogImage)
-      console.log('PreviewLink: twitterImage:', ogData.value.twitterImage)
-    }
-  } else {
-    console.error('Failed to fetch Open Graph data:', response.statusText)
   }
 })
 </script>
 
 <template>
   <div v-if="ogData" class="link-preview-widget">
-    <a :href="url" rel="noopener" target="_blank">
+    <a :href="url" rel="noopener noreferrer" target="_blank">
       <div class="link-preview-widget-title">
         {{ ogData.ogTitle || ogData.twitterTitle || 'No title available' }}
       </div>
@@ -89,7 +67,7 @@ onMounted(async () => {
     ></a>
   </div>
   <div v-else class="link-preview-loading">
-    <a :href="url" rel="noopener" target="_blank">{{ url }}</a>
+    <a :href="url" rel="noopener noreferrer" target="_blank">{{ url }}</a>
   </div>
 </template>
 
