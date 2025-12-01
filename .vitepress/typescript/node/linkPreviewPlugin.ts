@@ -8,13 +8,13 @@ const previewLinkUrls = new Set<string>()
 
 function isLinkPreview(tokens: Token[], idx: number): boolean {
   const t = tokens[idx + 1]
-  return t.type === 'text' && t.content === '@preview'
+  return !!t && t.type === 'text' && t.content === '@preview'
 }
 
 function getHref(tokens: Token[], idx: number): string {
-  const hrefIdx = tokens[idx].attrIndex('href')
-  if (hrefIdx < 0) throw new Error('Href attribute not found')
-  return tokens[idx].attrs![hrefIdx][1]
+  const href = tokens[idx].attrGet('href')
+  if (!href) throw new Error('Href attribute not found')
+  return href
 }
 
 export default function linkPreviewPlugin(md: MarkdownIt): void {
@@ -81,7 +81,7 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
     results
       .filter(
         (res): res is PromiseFulfilledResult<[string, SuccessResult]> =>
-          res?.status === 'fulfilled',
+          res.status === 'fulfilled' && res.value !== null,
       )
       .map(({ value: [url, res] }) => [url, res.result]),
   )
