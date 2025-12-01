@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci --force
+      - run: npm i --force
 
       - name: 'Create env file'
         run: echo "${{ secrets.ENV_FILE }}" > .env
