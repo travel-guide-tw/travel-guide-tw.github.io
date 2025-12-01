@@ -5,14 +5,16 @@ import * as cheerio from 'cheerio'
 
 // @ts-ignore
 import taskList from 'markdown-it-task-lists'
-// @ts-ignore
-import linkPreview from 'markdown-it-link-preview'
 
 import gtagHead from './typescript/node/gtagHead'
 import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
 
 import pkg from '../package.json'
+import linkPreviewPlugin, {
+  createPreviewLinkOGDataJsonFile,
+} from './typescript/node/linkPreviewPlugin'
+import { SiteConfig } from 'vitepress'
 
 const hostname = 'https://travel-guide-tw.github.io/'
 const title = '開源旅遊共筆'
@@ -70,7 +72,7 @@ export default withMermaid({
   cleanUrls: true,
   markdown: {
     config: (md) => {
-      md.use(taskList).use(linkPreview)
+      md.use(taskList).use(linkPreviewPlugin)
     },
     image: {
       lazyLoading: true,
@@ -116,5 +118,8 @@ export default withMermaid({
     } catch (e) {}
 
     return head
+  },
+  buildEnd: async (siteConfig: SiteConfig) => {
+    createPreviewLinkOGDataJsonFile()
   },
 })

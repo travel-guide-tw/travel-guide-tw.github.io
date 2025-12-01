@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci --force
+      - run: npm i --force
 
       - name: Build Vitepress Site
         run: npm run build
