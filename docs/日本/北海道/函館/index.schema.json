@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "函館",
+  "description": "函館位於北海道南端，是日本最早對外開放的港口之一。這裡融合了西方與日本的文化，擁有迷人的夜景、歷史悠久的建築和新鮮的海產。",
+  "keywords": ["函館", "函館景點", "函館旅遊", "函館夜景", "港口城市"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%8C%97%E6%B5%B7%E9%81%93/%E5%87%BD%E9%A4%A8",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "北海道",
+    "addressLocality": "函館市"
+  }
+}

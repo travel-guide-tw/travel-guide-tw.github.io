@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "青森",
+  "description": "青森縣位於本州島的最北端，以其美味的蘋果、壯觀的睡魔祭以及豐富的自然景觀而聞名。",
+  "keywords": ["青森", "青森景點", "青森旅遊", "睡魔祭", "奧入瀨溪流"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E9%9D%92%E6%A3%AE",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "青森縣"
+  }
+}
