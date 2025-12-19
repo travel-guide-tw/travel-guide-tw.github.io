@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "福島",
+  "description": "福島縣是日本面積第三大的縣，擁有豐富的自然景觀、歷史悠久的會津若松城以及著名的溫泉。",
+  "keywords": ["福島", "福島景點", "福島旅遊", "會津若松", "大內宿"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E7%A6%8F%E5%B3%B6",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福島縣",
+    "addressLocality": "福島市"
+  }
+}
