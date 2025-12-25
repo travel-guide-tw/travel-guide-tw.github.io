@@ -57,3 +57,5 @@ description: 旅遊指南內容編寫與維護規範
 - **Git 操作限制**：除非使用者明確要求，否則禁止執行 `git` 相關指令（如 `git add`, `git commit`）。
 - **自動修正與格式化**：在新增或修改檔案後，必須依序執行 `npm run correct`（修正中英文間距等）與 `npm run format`（Prettier 格式化），以確保內容與程式碼風格一致。
 - **VitePress 相容性**：確保 Markdown 語法符合 VitePress 的擴充規範，特別是自定義組件或特殊屬性的處理。
+- **建置檢查 (Build Check)**：在新增景點、修改連結或移動檔案後，**必須**執行 `pnpm run build` 以確認未引入任何無效連結 (Dead Links)。
+- **禁止忽略錯誤**：嚴禁在 `config.ts` 中啟用 `ignoreDeadLinks: true`。所有建置時發現的無效連結必須透過「修正路徑」或「提供佔位檔案 (Placeholder)」來解決，以確保網站導覽完整性。
