@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Taoyuan",
+  "description": "Taoyuan City is located in northern Taiwan, serving as a major transportation hub with Taiwan Taoyuan International Airport. It's a blend of urban development and natural landscapes.",
+  "url": "https://travel.tycg.gov.tw/"
+}

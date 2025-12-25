@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Keelung",
+  "description": "Keelung is a major port city in northeastern Taiwan. It's known for its rainy weather, night market, and beautiful coastal scenery including Heping Island and Chaojing Park.",
+  "url": "https://tour.klcg.gov.tw/"
+}

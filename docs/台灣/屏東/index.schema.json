@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Pingtung",
+  "description": "Pingtung County is Taiwan's southernmost county. It's known for its tropical beaches, coral reefs, and the indigenous Paiwan and Rukai cultures.",
+  "url": "https://www.pthg.gov.tw/tourism/"
+}

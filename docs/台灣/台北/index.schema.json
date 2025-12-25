@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Taipei",
+  "description": "Taipei is the capital and a special municipality of Taiwan. It is the political, economic, educational, and cultural center of Taiwan.",
+  "url": "https://www.travel.taipei/"
+}

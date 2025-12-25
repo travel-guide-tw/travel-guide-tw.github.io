@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Yilan",
+  "description": "Yilan County is located in northeastern Taiwan. It is known for its beautiful natural scenery, including mountains, hot springs, and a scenic coastline.",
+  "url": "https://travel.yilan.tw/"
+}
