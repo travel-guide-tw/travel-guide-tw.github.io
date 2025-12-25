@@ -60,3 +60,4 @@ description: 旅遊指南內容編寫與維護規範
 - **建置檢查 (Build Check)**：在新增景點、修改連結或移動檔案後，**必須**執行 `pnpm run build` 以確認未引入任何無效連結 (Dead Links)。
 - **禁止忽略錯誤**：嚴禁在 `config.ts` 中啟用 `ignoreDeadLinks: true`。所有建置時發現的無效連結必須透過「修正路徑」或「提供佔位檔案 (Placeholder)」來解決，以確保網站導覽完整性。
 - **禁止使用 ASCII 編碼 (No Percent-Encoding for Language Chars)**：在 Markdown 連結與 `schema.json` 檔案中，對於非英文字元（如中文、日文）必須使用**原始字元**（如 `[中文](./中文)`），嚴禁使用 `%E...` 形式的 ASCII 百分比編碼。但對於標準符號如空格（`%20`）則允許保留編碼形式。這有利於內容維護與搜尋。
+- **腳本開發規範 (Scripting Standards)**：嚴禁使用 Python 撰寫維護腳本。若需建立工具或自動化腳本，**必須**使用 Node.js (JavaScript) 撰寫，並統一放置於專案根目錄的 `/scripts` 資料夾下。
