@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Park",
+  "name": "萬博紀念公園",
+  "description": "1970 年世界博覽會的遺址，公園內有著名的太陽之塔、自然文化園及各種休閒設施。",
+  "keywords": ["萬博紀念公園", "太陽之塔", "1970萬博", "大阪公園", "賞櫻名所"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%A4%A7%E9%98%AA/%E6%99%AF%E9%BB%9E/%E8%90%AC%E5%8D%9A%E7%B4%80%E5%BF%B5%E5%85%AC%E5%9C%92",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "大阪府",
+    "addressLocality": "吹田市千里萬博公園 1-1"
+  }
+}

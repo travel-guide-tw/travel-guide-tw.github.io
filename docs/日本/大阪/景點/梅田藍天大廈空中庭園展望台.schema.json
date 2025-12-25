@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "梅田藍天大廈空中庭園展望台",
+  "description": "位於梅田藍天大廈頂層的空中庭園展望台，可以 360 度全方位俯瞰大阪市的璀璨夜景與繁華市容。",
+  "keywords": ["梅田藍天大廈", "空中庭園", "大阪夜景", "梅田景點", "展望台"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC/%E5%A4%A7%E9%98%AA/%E6%99%AF%E9%BB%9E/%E6%A2%85%E7%94%B0%E8%97%8D%E5%A4%A9%E5%A4%A7%E5%BB%88%E7%A9%BA%E5%BA%AD%E5%9C%92%E5%B1%95%E6%9C%9B%E5%8F%B0",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "大阪府",
+    "addressLocality": "大阪市北區大淀中 1-1-88"
+  }
+}

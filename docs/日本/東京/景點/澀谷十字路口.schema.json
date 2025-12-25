@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "澀谷十字路口",
+  "description": "被譽為全世界最繁忙的十字路口，象徵著東京的現代活力與繁華街景。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "東京都澀谷區",
+    "addressRegion": "東京都",
+    "postalCode": "150-0043",
+    "streetAddress": "道玄坂 2 丁目 2-1",
+    "addressCountry": "JP"
+  },
+  "url": "https://travel-guide-tw.github.io/日本/東京/景點/澀谷十字路口"
+}
