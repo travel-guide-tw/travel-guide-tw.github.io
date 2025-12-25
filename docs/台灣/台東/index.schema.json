@@ -1,0 +1,7 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "Taitung",
+  "description": "Taitung City is a city on the southeastern coast of Taiwan. It is known for its natural beauty, including mountains, hot springs, and a scenic coastline.",
+  "url": "https://tour.taitung.gov.tw/"
+}
