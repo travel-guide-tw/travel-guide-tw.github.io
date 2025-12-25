@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "新宿御苑",
+  "description": "融合了日式、英式和法式庭園風格的都市公園，是東京著名的賞櫻與賞楓名所。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "東京都新宿區",
+    "addressRegion": "東京都",
+    "postalCode": "160-0014",
+    "streetAddress": "內藤町 11",
+    "addressCountry": "JP"
+  },
+  "url": "https://travel-guide-tw.github.io/日本/東京/景點/新宿御苑"
+}

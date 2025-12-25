@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "銀山溫泉",
+  "description": "位於山形縣尾花澤市，保留了大正浪漫時期的洋風建築風格，冬季雪景夢幻，是著名的溫泉勝地。",
+  "keywords": ["銀山溫泉", "大正浪漫", "山形景點", "溫泉街", "雪景"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/山形/景點/銀山溫泉",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "山形縣",
+    "addressLocality": "尾花澤市大字銀山本畑"
+  }
+}

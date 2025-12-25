@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "春日大社",
+  "description": "以三千座燈籠聞名的古老神社，位於奈良公園深處，朱紅建築與自然森林和諧共存。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "奈良市",
+    "addressRegion": "奈良縣",
+    "postalCode": "630-8212",
+    "streetAddress": "春日野町 160",
+    "addressCountry": "JP"
+  },
+  "url": "https://travel-guide-tw.github.io/日本/奈良/景點/春日大社"
+}

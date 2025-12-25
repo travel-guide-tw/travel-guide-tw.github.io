@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "東京晴空塔",
+  "description": "世界第一高塔，高度 634 公尺，提供 360 度俯瞰東京全景的壯觀視野。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "東京都墨田區",
+    "addressRegion": "東京都",
+    "postalCode": "131-0045",
+    "streetAddress": "押上 1 丁目 1-2",
+    "addressCountry": "JP"
+  },
+  "url": "https://travel-guide-tw.github.io/日本/東京/景點/東京晴空塔"
+}

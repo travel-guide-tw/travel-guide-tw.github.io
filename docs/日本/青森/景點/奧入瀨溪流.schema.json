@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Park",
+  "name": "奧入瀨溪流",
+  "description": "位於青森縣十和田市，是日本著名的溪流景觀，被指定為特別名勝及天然紀念物。四季景色迷人，以瀑布及森林步道聞名。",
+  "keywords": ["奧入瀨溪流", "十和田市", "青森景點", "自然景觀", "瀑布"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/青森/景點/奧入瀬溪流",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "青森縣",
+    "addressLocality": "十和田市大字奧瀨"
+  }
+}
