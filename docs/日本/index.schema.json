@@ -5,7 +5,7 @@
   "description": "日本是一個位於東亞的島國，以其獨特的文化、美食和自然風光而聞名。從古老的寺廟到現代化的都市，日本為遊客提供了豐富多彩的旅遊體驗。",
   "keywords": ["日本", "日本旅遊", "日本景點", "文化", "美食", "自然風光"],
   "inLanguage": "zh-TW",
-  "url": "https://travel-guide-tw.github.io/%E6%97%A5%E6%9C%AC",
+  "url": "https://travel-guide-tw.github.io/日本",
   "knowsAbout": [
     { "@type": "City", "name": "東京" },
     { "@type": "City", "name": "京都" },
