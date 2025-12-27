@@ -11,10 +11,7 @@ import generateSidebar from './typescript/node/generateSidebar'
 import generateRewrites from './typescript/node/generateRewrites'
 
 import pkg from '../package.json'
-import linkPreviewPlugin, {
-  createPreviewLinkOGDataJsonFile,
-} from './typescript/node/linkPreviewPlugin'
-import { SiteConfig } from 'vitepress'
+import linkPreviewPlugin from './typescript/node/linkPreviewPlugin'
 
 const hostname = 'https://travel-guide-tw.github.io/'
 const title = '開源旅遊共筆'
@@ -118,8 +115,5 @@ export default withMermaid({
     } catch (e) {}
 
     return head
-  },
-  buildEnd: async (siteConfig: SiteConfig) => {
-    createPreviewLinkOGDataJsonFile()
   },
 })

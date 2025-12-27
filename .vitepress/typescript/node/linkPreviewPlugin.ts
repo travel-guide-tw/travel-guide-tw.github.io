@@ -25,6 +25,46 @@ function getHref(tokens: Token[], idx: number): string {
   return href
 }
 
+export async function processUrl(url: string): Promise<void> {
+  const previewDir = path.resolve(process.cwd(), 'public/json/preview/')
+
+  // Ensure the directory exists
+  await fs.promises.mkdir(previewDir, { recursive: true })
+
+  try {
+    const hash = fnv1a(url)
+    const filePath = path.join(previewDir, `${hash}.json`)
+
+    // if there is a file already, prevent fetching again. but if the file is more than 1 year old, fetch again
+    const fileExists = fs.existsSync(filePath)
+    if (fileExists) {
+      const fileStats = fs.statSync(filePath)
+      const fileAge = Date.now() - fileStats.mtime.getTime()
+      const oneYearInMs = 365 * 24 * 60 * 60 * 1000
+      if (fileAge < oneYearInMs) {
+        return
+      }
+    }
+
+    const ogData = await ogs({
+      url,
+    }).catch(() =>
+      ogs({
+        url: url.replace('https://', 'http://'),
+      }),
+    )
+
+    if (ogData.error) {
+      console.warn(`OG error for ${url}: ${ogData.error}`)
+      return
+    }
+
+    await fs.promises.writeFile(filePath, JSON.stringify(ogData.result))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export default function linkPreviewPlugin(md: MarkdownIt): void {
   const defaultRender =
     md.renderer.rules.link_open ||
@@ -55,66 +95,35 @@ export default function linkPreviewPlugin(md: MarkdownIt): void {
   ): string {
     const url = getHref(tokens, idx)
 
-    // Check if it's an external link (http/https)
     const isExternal = /^https?:\/\//.test(url)
 
-    if (isExternal) {
-      if (isLinkPreview(tokens, idx)) {
-        const title = tokens[idx + 1].content
-        hideTokensUntilLinkClose(tokens, idx)
+    if (
+      isExternal &&
+      isLinkPreview(tokens, idx) &&
+      ![
+        'pdf',
+        'jpg',
+        'png',
+        'gif',
+        'webp',
+        'svg',
+        'ico',
+        'webm',
+        'mp4',
+        'mp3',
+        'wav',
+        'ogg',
+      ].includes(url.toLowerCase().split('.').pop() || '')
+    ) {
+      const title = tokens[idx + 1].content
+      hideTokensUntilLinkClose(tokens, idx)
 
-        previewLinkUrls.add(url)
+      previewLinkUrls.add(url)
 
-        return `<PreviewLink url="${url}" placeHolderTitle="${title}" />`
-      }
+      processUrl(url)
+
+      return `<PreviewLink url="${url}" placeHolderTitle="${title}" />`
     }
     return defaultRender(tokens, idx, options, env, self)
   }
-}
-
-export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
-  const previewDir = path.resolve(process.cwd(), 'public/json/preview/')
-
-  // Ensure the directory exists
-  await fs.promises.mkdir(previewDir, { recursive: true })
-  await Promise.allSettled(
-    Array.from(previewLinkUrls).map(async (url): Promise<void> => {
-      try {
-        const hash = fnv1a(url)
-        const filePath = path.join(previewDir, `${hash}.json`)
-
-        // if there is a file already, prevent fetching again. but if the file is more than 1 year old, fetch again
-        const fileExists = fs.existsSync(filePath)
-        if (fileExists) {
-          const fileStats = fs.statSync(filePath)
-          const fileAge = Date.now() - fileStats.mtime.getTime()
-          const oneYearInMs = 365 * 24 * 60 * 60 * 1000
-          if (fileAge < oneYearInMs) {
-            return
-          }
-        }
-
-        // Skip files that are clearly not HTML
-        if (
-          url.toLowerCase().endsWith('.pdf') ||
-          url.toLowerCase().endsWith('.jpg') ||
-          url.toLowerCase().endsWith('.png')
-        ) {
-          return
-        }
-
-        const ogData = await ogs({ url, timeout: 10000 })
-
-        if (ogData.error) {
-          // Silent skip for all OG errors to keep build logs clean as requested
-          return
-        }
-
-        await fs.promises.writeFile(filePath, JSON.stringify(ogData.result))
-        console.log(`Preview link data for ${url} written to ${filePath}`)
-      } catch (error) {
-        // Silent skip for all process errors
-      }
-    }),
-  )
 }
