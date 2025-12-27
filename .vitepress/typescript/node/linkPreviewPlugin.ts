@@ -99,8 +99,26 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
           }
         }
 
-        const ogData = await ogs({ url, timeout }).catch(() =>
-          ogs({ url: url.replace('https://', 'http://'), timeout }),
+        const ogData = await ogs({
+          url,
+          timeout,
+          fetchOptions: {
+            headers: {
+              'user-agent':
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            },
+          },
+        }).catch(() =>
+          ogs({
+            url: url.replace('https://', 'http://'),
+            timeout,
+            fetchOptions: {
+              headers: {
+                'user-agent':
+                  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+              },
+            },
+          }),
         )
 
         if (ogData.error) {
