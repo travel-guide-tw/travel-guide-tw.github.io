@@ -7,6 +7,7 @@ import fnv1a from '../../utils/fnv1a'
 const previewLinkUrls = new Set<string>()
 const oneYearInMs = 365 * 24 * 60 * 60 * 1000
 const timeout = 30 * 1000
+const CONCURRENCY_LIMIT = 15
 
 function isUrlClearlyNotHtml(url: string): boolean {
   return ['pdf', 'jpg', 'png', 'jpeg', 'gif', 'webp', 'svg'].some((ext) =>
@@ -79,38 +80,25 @@ export default function linkPreviewPlugin(md: MarkdownIt): void {
 
 export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
   const previewDir = path.resolve(process.cwd(), 'public/json/preview/')
-
-  // Ensure the directory exists
   await fs.promises.mkdir(previewDir, { recursive: true })
-  await Promise.allSettled(
-    Array.from(previewLinkUrls).map(async (url): Promise<void> => {
-      try {
-        const hash = fnv1a(url)
-        const filePath = path.join(previewDir, `${hash}.json`)
 
-        // if there is a file already, prevent fetching again. but if the file is more than 1 year old, fetch again
-        const fileExists = fs.existsSync(filePath)
-        if (fileExists) {
-          const fileStats = await fs.promises.stat(filePath)
-          const fileAge = Date.now() - fileStats.mtime.getTime()
+  const urlArray = Array.from(previewLinkUrls)
 
-          if (fileAge < oneYearInMs) {
-            return
+  for (let i = 0; i < urlArray.length; i += CONCURRENCY_LIMIT) {
+    const chunk = urlArray.slice(i, i + CONCURRENCY_LIMIT)
+
+    await Promise.allSettled(
+      chunk.map(async (url) => {
+        try {
+          const hash = fnv1a(url)
+          const filePath = path.join(previewDir, `${hash}.json`)
+
+          if (fs.existsSync(filePath)) {
+            const fileStats = await fs.promises.stat(filePath)
+            if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) return
           }
-        }
-
-        const ogData = await ogs({
-          url,
-          timeout,
-          fetchOptions: {
-            headers: {
-              'user-agent':
-                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            },
-          },
-        }).catch(() =>
-          ogs({
-            url: url.replace('https://', 'http://'),
+          const ogOptions = {
+            url,
             timeout,
             fetchOptions: {
               headers: {
@@ -118,18 +106,26 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
                   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
               },
             },
-          }),
-        )
+          }
 
-        if (ogData.error) {
-          console.error(`OG error for ${url}: ${JSON.stringify(ogData)}`)
-          return
+          let ogData = await ogs(ogOptions).catch(() =>
+            ogs({ ...ogOptions, url: url.replace('https://', 'http://') }),
+          )
+
+          if (ogData.error) {
+            console.warn(`⚠️ Timeout/Error for ${url}. Skipping...`)
+            return
+          }
+
+          await fs.promises.writeFile(filePath, JSON.stringify(ogData.result))
+          console.log(`✅ Cached: ${url}`)
+        } catch (error) {
+          console.error(`❌ Failed ${url}:`, error)
         }
+      }),
+    )
 
-        await fs.promises.writeFile(filePath, JSON.stringify(ogData.result))
-      } catch (error) {
-        console.error(error)
-      }
-    }),
-  )
+    // Optional: wait 500ms between batches to look less like a bot
+    await new Promise((resolve) => setTimeout(resolve, 500))
+  }
 }
