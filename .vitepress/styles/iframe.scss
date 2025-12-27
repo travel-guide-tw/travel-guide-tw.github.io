@@ -1,7 +1,8 @@
 iframe {
   border: 0;
 
-  &[src^='https://www.google.com/maps/embed'] {
+  &[src^='https://www.google.com/maps/embed']
+  {
     margin-top: 1rem;
     width: 100%;
     aspect-ratio: 19 / 9;
