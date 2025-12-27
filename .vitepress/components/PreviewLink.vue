@@ -2,10 +2,16 @@
 import { OgObject } from 'open-graph-scraper/types/lib/types'
 import { onMounted, ref, computed } from 'vue'
 
+import fnv1a from '../utils/fnv1a'
+
 const props = defineProps({
   url: {
     type: String,
     required: true,
+  },
+  placeHolderTitle: {
+    type: String,
+    required: false,
   },
 })
 
@@ -19,39 +25,46 @@ const imageUrl = computed(() => {
     : (ogData.value.ogImage?.[0] || ogData.value.twitterImage?.[0])?.url || ''
 })
 
-const hostname = computed(() => {
-  return !ogData.value
-    ? ''
-    : ogData.value.ogSiteName || ogData.value.twitterSiteName || url
-})
-
 onMounted(async () => {
   // Fetch the Open Graph data from og data cache json file
   console.log('PreviewLink: Fetching OG data for URL:', url)
-  const response = await fetch('/json/preview/previewLinkData.json', {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  if (response.ok) {
-    const data = await response.json()
-    ogData.value = data[url] || null
+
+  try {
+    const hash = fnv1a(url)
+    const response = await fetch(`/json/preview/${hash}.json`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (response.ok) {
+      const data = await response.json()
+      ogData.value = data || null
+    }
+  } catch (e) {
+    console.error('PreviewLink: Error fetching OG data:', e)
   }
+})
+
+const hostname = computed(() => {
+  return !ogData.value
+    ? ''
+    : ogData.value.ogSiteName || ogData.value.twitterSite || url
 })
 </script>
 
 <template>
-  <div v-if="ogData" class="link-preview-widget">
+  <div class="link-preview-widget">
     <a :href="url" rel="noopener noreferrer" target="_blank">
       <div class="link-preview-widget-title">
-        {{ ogData.ogTitle || ogData.twitterTitle || 'No title available' }}
+        {{
+          ogData?.ogTitle ||
+          ogData?.twitterTitle ||
+          placeHolderTitle ||
+          'No title available'
+        }}
       </div>
       <div class="link-preview-widget-description">
-        {{
-          ogData.ogDescription ||
-          ogData.twitterDescription ||
-          'No description available'
-        }}
+        {{ ogData?.ogDescription || ogData?.twitterDescription || url }}
       </div>
       <div class="link-preview-widget-url">
         {{ hostname }}
@@ -65,9 +78,6 @@ onMounted(async () => {
       :style="{ backgroundImage: `url('${imageUrl}')` }"
       target="_blank"
     ></a>
-  </div>
-  <div v-else class="link-preview-loading">
-    <a :href="url" rel="noopener noreferrer" target="_blank">{{ url }}</a>
   </div>
 </template>
 
@@ -169,25 +179,6 @@ onMounted(async () => {
 
   &:hover {
     opacity: 0.9;
-  }
-}
-
-.link-preview-loading {
-  padding: 12px 16px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  margin: 16px 0;
-
-  a {
-    color: var(--vp-c-brand-1);
-    text-decoration: none;
-    font-size: 14px;
-
-    &:hover {
-      text-decoration: underline;
-      color: var(--vp-c-brand-2);
-    }
   }
 }
 </style>

@@ -14,7 +14,7 @@
 - 公車 可搭乘公車 201 路到 chateau de Chillon 站下。
 - 門票 成人 12.5 瑞士法郎，6-16 歲兒童 6 瑞士法郎，語音導覽器租賃 6 瑞士法郎（含中文導覽）。
 - 開放時間 3 月 9:30-18:00（17:00 後停止進入），4 月 -9 月 9:00-19:00（18:00 後停止進入），10 月 9:30-18:00（17:00 後停止進入），11 月 - 次年 2 月 10:00-17:00（16:00 後停止進入）。1 月 1 日、12 月 25 日關閉。
-- [官方網站](http://www.chillon.ch/en/castle)
+- [官方網站](https://www.chillon.ch/en/)
 
 ## 地圖
 
@@ -22,4 +22,4 @@
 
 ### 相關連結
 
-- [Château de Chillon 官方網站](http://www.chillon.ch/en/castle)
+- [Château de Chillon 官方網站](https://www.chillon.ch/en/)

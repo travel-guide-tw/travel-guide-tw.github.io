@@ -52,4 +52,4 @@ A: 您可以透過 issue 系統或直接提交 PR 來修正錯誤。
 
 ### GitHub
 
-[@preview](https://github.com/travel-guide-tw/travel-guide-tw.github.io)
+[GitHub - travel-guide-tw/travel-guide-tw.github.io: 旅遊資訊收集網站，觀迎提交 PR 擴充資訊，也歡迎發 Issues 討論](https://github.com/travel-guide-tw/travel-guide-tw.github.io)

@@ -31,7 +31,6 @@
    - 提交您的更改，使用 Git commit，然後推送到您 Fork 的儲存庫。
 
 6. **發送 Pull Request（PR）**
-
    - 最後，在 GitHub 上發 PR，等待維護者審核並合併。
 
 ### 方式二：直接在 GitHub 上編輯

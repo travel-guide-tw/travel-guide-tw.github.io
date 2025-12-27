@@ -11,5 +11,5 @@
 
 ## 相關連結
 
-- [Wikipedia 瑞士](https://zh.wikipedia.org/zh-tw/%E7%91%9E%E5%A3%AB)
+- [Switzerland Tourism - Official Website](https://www.myswitzerland.com/en/)
 - [外交部領事事務所 瑞士](https://www.boca.gov.tw/sp-foof-countrycp-01-72-d01b5-1.html)

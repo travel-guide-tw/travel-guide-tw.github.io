@@ -25,4 +25,4 @@
 
 ## 相關連結
 
-- [登別國際觀光會議協會官方網站](http://www.noboribetsu-spa.jp/)
+- [登別國際觀光會議協會官方網站](https://noboribetsu-spa.jp/)
