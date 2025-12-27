@@ -6,6 +6,7 @@ import fnv1a from '../../utils/fnv1a'
 
 const previewLinkUrls = new Set<string>()
 const oneYearInMs = 365 * 24 * 60 * 60 * 1000
+const timeout = 30 * 1000
 
 function isUrlClearlyNotHtml(url: string): boolean {
   return ['pdf', 'jpg', 'png', 'jpeg', 'gif', 'webp', 'svg'].some((ext) =>
@@ -98,8 +99,8 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
           }
         }
 
-        const ogData = await ogs({ url }).catch(() =>
-          ogs({ url: url.replace('https://', 'http://') }),
+        const ogData = await ogs({ url, timeout }).catch(() =>
+          ogs({ url: url.replace('https://', 'http://'), timeout }),
         )
 
         if (ogData.error) {
