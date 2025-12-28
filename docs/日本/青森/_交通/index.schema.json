@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "青森交通指南",
+  "description": "青森縣交通指南，包含新幹線、青森機場、JR 巴士東北及租車資訊，協助旅客規劃青森旅遊行程。",
+  "breadcrumb": "日本 > 青森 > 交通",
+  "inLanguage": "zh-TW",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "機場交通",
+        "url": "https://travel-guide-tw.github.io/日本/青森/交通/機場"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "鐵路交通",
+        "url": "https://travel-guide-tw.github.io/日本/青森/交通/鐵路"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "巴士交通",
+        "url": "https://travel-guide-tw.github.io/日本/青森/交通/巴士"
+      }
+    ]
+  }
+}

@@ -66,8 +66,9 @@ async function getWikimediaImageUrl(fileName: string): Promise<string | null> {
   }
 }
 
-async function run() {
-  const files = getFiles(docsDir)
+async function run(targetDir?: string) {
+  const baseDir = targetDir ? path.resolve(targetDir) : docsDir
+  const files = getFiles(baseDir)
   console.log(`正在檢查 ${files.length} 個檔案中的圖片連結...`)
 
   for (const file of files) {
@@ -82,7 +83,7 @@ async function run() {
         const isValid = await checkUrl(url)
         if (!isValid) {
           console.log(
-            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片: ${url}`,
+            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片：${url}`,
           )
 
           // 嘗試修復 Wikimedia 連結
@@ -102,10 +103,10 @@ async function run() {
               url.match(/File:(.+)$/)
             if (fileNameMatch) {
               const fileName = decodeURIComponent(fileNameMatch[1])
-              console.log(`  嘗試從 Wikimedia API 獲取新連結: ${fileName}`)
+              console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
               const newUrl = await getWikimediaImageUrl(fileName)
               if (newUrl) {
-                console.log(`  成功修復: ${newUrl}`)
+                console.log(`  成功修復：${newUrl}`)
                 const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
                 content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
                 modified = true
@@ -121,11 +122,12 @@ async function run() {
     if (modified) {
       fs.writeFileSync(file, content)
       console.log(
-        `[更新] 已儲存修復後的檔案: ${path.relative(process.cwd(), file)}`,
+        `[更新] 已儲存修復後的檔案：${path.relative(process.cwd(), file)}`,
       )
     }
   }
   console.log('檢查完成。')
 }
 
-run()
+const input = process.argv[2]
+run(input)

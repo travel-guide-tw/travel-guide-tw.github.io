@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "青森活動與祭典指南",
+  "description": "探索青森縣全年度的祭典與活動，包含著名的青森睡魔祭、弘前櫻花祭及紅葉美景。",
+  "breadcrumb": "日本 > 青森 > 活動",
+  "inLanguage": "zh-TW",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "青森睡魔祭",
+        "url": "https://travel-guide-tw.github.io/日本/青森/活動/睡魔祭"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "弘前櫻花祭 (賞櫻)",
+        "url": "https://travel-guide-tw.github.io/日本/青森/活動/賞櫻"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "name": "富良野",
+  "description": "富良野位於北海道中心位置，以其壯麗的田園風光與夏季的薰衣草田聞名於世。",
+  "inLanguage": "zh-TW",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "北海道",
+    "addressLocality": "富良野市"
+  }
+}

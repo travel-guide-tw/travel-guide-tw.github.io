@@ -71,8 +71,6 @@
   - 有往返靜岡車站、濱松車站、掛川車站的機場巴士。
   - 搭乘巴士至附近的 JR 島田站或掛川站轉乘鐵路。
 
----
-
 ## 相關連結
 
 - [富士急靜岡巴士 (Fujikyu Shizuoka Bus)](https://www.shizuokabus.co.jp/)
