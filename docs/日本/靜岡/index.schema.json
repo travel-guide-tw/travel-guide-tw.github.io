@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "靜岡",
+  "description": "靜岡縣位於日本本州中部，坐擁富士山南麓，擁有豐富的自然景觀、著名的溫泉以及全日本第一的茶葉產量。這裡不僅可以從不同角度欣賞富士山，還有美麗的伊豆半島、駿河灣海景以及歷史悠久的古道。",
+  "keywords": [
+    "靜岡",
+    "靜岡景點",
+    "靜岡旅遊",
+    "富士山",
+    "伊豆",
+    "熱海",
+    "日本茶"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/靜岡",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "靜岡縣",
+    "addressLocality": "靜岡市"
+  },
+  "knowsAbout": [
+    { "@type": "Mountain", "name": "富士山" },
+    { "@type": "Place", "name": "三保松原" },
+    { "@type": "LandmarksOrHistoricalBuildings", "name": "富士山本宮淺間大社" }
+  ]
+}

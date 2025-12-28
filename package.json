@@ -9,6 +9,7 @@
     "dev": "vitepress dev ./",
     "build": "vitepress build ./",
     "check": "npx prettier --check .",
+    "verify-links": "node scripts/verify-links.cjs",
     "format": "npx prettier --write .",
     "prepare": "husky install"
   },
