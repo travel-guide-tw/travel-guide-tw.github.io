@@ -60,4 +60,8 @@ description: 旅遊指南內容編寫與維護規範
 - **建置檢查 (Build Check)**：在新增景點、修改連結或移動檔案後，**必須**執行 `pnpm run build` 以確認未引入任何無效連結 (Dead Links)。
 - **禁止忽略錯誤**：嚴禁在 `config.ts` 中啟用 `ignoreDeadLinks: true`。所有建置時發現的無效連結必須透過「修正路徑」或「提供佔位檔案 (Placeholder)」來解決，以確保網站導覽完整性。
 - **禁止使用 ASCII 編碼 (No Percent-Encoding for Language Chars)**：在 Markdown 連結與 `schema.json` 檔案中，對於非英文字元（如中文、日文）必須使用**原始字元**（如 `[中文](./中文)`），嚴禁使用 `%E...` 形式的 ASCII 百分比編碼。但對於標準符號如空格（`%20`）則允許保留編碼形式。這有利於內容維護與搜尋。
-- **腳本開發規範 (Scripting Standards)**：嚴禁使用 Python 撰寫維護腳本。若需建立工具或自動化腳本，**必須**使用 Node.js (JavaScript) 撰寫，並統一放置於專案根目錄的 `/scripts` 資料夾下。
+- **腳本開發規範 (Scripting Standards)**：嚴禁使用 Python 撰寫維護腳本。若需建立工具或自動化腳本，**必須**使用 Node.js (JavaScript) 撰寫，並統一放置於專案根目錄的 `/scripts` 資料夾下。副檔名建議使用 `.cjs` 以確保相容性。
+- **內部連結強化 (Inner Connections)**：在編寫內容時，應主動搜尋並建立與其他相關頁面的連結（如：景點連往交通指南、區域連往鄰近區域）。確保資訊不是孤島，提升使用者導覽體驗。
+- **網址嚴謹校對 (URL Verification)**：所有新增的外部連結**必須**手動或透過腳本確認其語系路徑（如 `/tc/` vs `/zh-tw/`）與有效性。若發現 404 或重新導向，必須修正為最終有效的官方網址。
+- **Google Maps 標準化**：嵌入地圖時，統一使用 `width="100%"` 與 `height="450"`，並確保包含 `allowfullscreen` 與 `loading="lazy"` 屬性。
+- **Pull Request 規範**：在準備提交 PR 前，**必須**先閱讀並遵循 `.github/pull_request_template.md` 的格式要求。確保說明清晰、改動內容詳盡，並附上相關參考資料。
