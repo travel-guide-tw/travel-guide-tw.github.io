@@ -2,11 +2,11 @@
  * 從 Wikimedia Commons 獲取圖片的直接下載連結
  *
  * 使用方式：
- * 1. 使用檔案名稱：node scripts/get-wikimedia-image.js "File:Example.jpg"
- * 2. 使用完整網址：node scripts/get-wikimedia-image.js "https://commons.wikimedia.org/wiki/File:Example.jpg"
+ * 1. 使用檔案名稱：bun scripts/get-wikimedia-image.ts "File:Example.jpg"
+ * 2. 使用完整網址：bun scripts/get-wikimedia-image.ts "https://commons.wikimedia.org/wiki/File:Example.jpg"
  */
 
-async function getWikimediaImageUrl(input) {
+async function getWikimediaImageUrl(input: string | undefined) {
   if (!input) {
     console.error('請提供 Wikimedia 檔案名稱或網址')
     process.exit(1)
@@ -50,7 +50,7 @@ async function getWikimediaImageUrl(input) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const data = await response.json()
+    const data = (await response.json()) as any
     const pages = data.query.pages
     const pageId = Object.keys(pages)[0]
 
@@ -67,7 +67,7 @@ async function getWikimediaImageUrl(input) {
       console.error(`無法獲取圖片連結：${title}`)
       process.exit(1)
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('發生錯誤：', error.message)
     process.exit(1)
   }

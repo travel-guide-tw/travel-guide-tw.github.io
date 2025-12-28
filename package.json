@@ -8,8 +8,10 @@
     "correct": "autocorrect --fix",
     "dev": "vitepress dev ./",
     "build": "vitepress build ./",
-    "check": "npx prettier --check .",
-    "format": "npx prettier --write .",
+    "check": "bun x prettier --check .",
+    "verify-links": "bun scripts/verify-links.ts",
+    "verify-images": "bun scripts/verify-images.ts",
+    "format": "bun x prettier --write .",
     "prepare": "husky install"
   },
   "repository": {
