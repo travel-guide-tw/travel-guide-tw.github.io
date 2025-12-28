@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'node:fs'
+import path from 'node:path'
 
-const docsDir = path.join(__dirname, '../docs')
+const docsDir = path.join(import.meta.dirname, '../docs')
 
 // 黑名單：常見的個人部落格、心得分享網站、社群平台
 const BLACKLIST_DOMAINS = [
@@ -32,7 +32,7 @@ const OFFICIAL_KEYWORDS = [
   'fujisan-climb.jp',
 ]
 
-function getFiles(dir, fileList = []) {
+function getFiles(dir: string, fileList: string[] = []): string[] {
   if (!fs.existsSync(dir)) return []
   if (fs.statSync(dir).isFile()) {
     if (dir.endsWith('.md')) fileList.push(dir)
@@ -50,7 +50,7 @@ function getFiles(dir, fileList = []) {
   return fileList
 }
 
-async function checkUrl(url) {
+async function checkUrl(url: string) {
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -66,13 +66,13 @@ async function checkUrl(url) {
     } else {
       return { ok: false, status: response.status, reason: response.statusText }
     }
-  } catch (error) {
+  } catch (error: any) {
     return { ok: false, reason: error.message }
   }
 }
 
-async function scan(target) {
-  let files = []
+async function scan(target: string | undefined) {
+  let files: string[] = []
   if (!target) {
     files = getFiles(docsDir)
   } else {
@@ -93,12 +93,13 @@ async function scan(target) {
     const content = fs.readFileSync(file, 'utf-8')
     const relativePath = path.relative(process.cwd(), file)
 
-    const sectionMatch = content.match(/## 相關連結([\s\S]*?)(?=\n##|$)/)
+    // 更寬鬆的正則表達式，允許標題前後有空格或分隔線
+    const sectionMatch = content.match(/## 相關連結\s*([\s\S]*?)(?=\n##|$)/)
     if (!sectionMatch) continue
 
     const linksSection = sectionMatch[1]
-    const linkRegex = /.*?\[.*?\]\((https?:\/\/.*?)\)/g
-    let match
+    const linkRegex = /.*\[.*?\]\((https?:\/\/.*?)\)/g
+    let match: RegExpExecArray | null
 
     while ((match = linkRegex.exec(linksSection)) !== null) {
       totalLinks++
@@ -141,7 +142,7 @@ const input = process.argv[2]
 
 if (input && (input.startsWith('http') || input.includes(']('))) {
   // 處理單個連結
-  const mdMatch = input.match(/.*?\[.*?\]\((https?:\/\/.*?)\)/)
+  const mdMatch = input.match(/.*\[.*?]\]\((https?:\/\/.*?)\)/)
   const url = mdMatch ? mdMatch[1] : input
 
   console.log(`正在檢查單個連結: ${url}`)

@@ -1,10 +1,9 @@
-const fs = require('fs')
-const path = require('path')
-const https = require('https')
+import fs from 'node:fs'
+import path from 'node:path'
 
-const docsDir = path.join(__dirname, '../docs')
+const docsDir = path.join(import.meta.dirname, '../docs')
 
-function getFiles(dir, fileList = []) {
+function getFiles(dir: string, fileList: string[] = []): string[] {
   if (!fs.existsSync(dir)) return []
   const files = fs.readdirSync(dir)
   files.forEach((file) => {
@@ -18,33 +17,24 @@ function getFiles(dir, fileList = []) {
   return fileList
 }
 
-async function checkUrl(url) {
-  return new Promise((resolve) => {
-    const req = https.get(
-      url,
-      {
-        headers: { 'User-Agent': 'TravelGuideTW-Bot/1.0' },
-        timeout: 10000,
+async function checkUrl(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'TravelGuideTW-Bot/1.0',
       },
-      (res) => {
-        // 接受 2xx 或 3xx (重新導向)
-        resolve(res.statusCode >= 200 && res.statusCode < 400)
-      },
-    )
-    req.on('error', (err) => {
-      console.log(`  連線錯誤: ${err.message}`)
-      resolve(false)
+      signal: AbortSignal.timeout(10000),
     })
-    req.on('timeout', () => {
-      req.destroy()
-      console.log(`  連線逾時`)
-      resolve(false)
-    })
-    req.end()
-  })
+    // Accept 2xx or 3xx (Redirects)
+    return response.status >= 200 && response.status < 400
+  } catch (error: any) {
+    console.log(`  連線錯誤: ${error.message}`)
+    return false
+  }
 }
 
-async function getWikimediaImageUrl(fileName) {
+async function getWikimediaImageUrl(fileName: string): Promise<string | null> {
   const title = fileName.startsWith('File:') ? fileName : 'File:' + fileName
   const params = new URLSearchParams({
     action: 'query',
@@ -57,38 +47,23 @@ async function getWikimediaImageUrl(fileName) {
 
   const apiUrl = `https://commons.wikimedia.org/w/api.php?${params.toString()}`
 
-  return new Promise((resolve) => {
-    https
-      .get(
-        apiUrl,
-        {
-          headers: { 'User-Agent': 'TravelGuideTW-Bot/1.0' },
-          timeout: 10000,
-        },
-        (res) => {
-          let data = ''
-          res.on('data', (chunk) => (data += chunk))
-          res.on('end', () => {
-            try {
-              const json = JSON.parse(data)
-              const pages = json.query.pages
-              const pageId = Object.keys(pages)[0]
-              if (pageId !== '-1' && pages[pageId].imageinfo) {
-                resolve(pages[pageId].imageinfo[0].url)
-              } else {
-                resolve(null)
-              }
-            } catch (e) {
-              resolve(null)
-            }
-          })
-        },
-      )
-      .on('error', () => resolve(null))
-      .on('timeout', () => {
-        resolve(null)
-      })
-  })
+  try {
+    const response = await fetch(apiUrl, {
+      headers: {
+        'User-Agent': 'TravelGuideTW-Bot/1.0',
+      },
+      signal: AbortSignal.timeout(10000),
+    })
+    const data = (await response.json()) as any
+    const pages = data.query.pages
+    const pageId = Object.keys(pages)[0]
+    if (pageId !== '-1' && pages[pageId].imageinfo) {
+      return pages[pageId].imageinfo[0].url
+    }
+    return null
+  } catch (e) {
+    return null
+  }
 }
 
 async function run() {
@@ -98,7 +73,7 @@ async function run() {
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
     const imgRegex = /!\[.*?\]\((.*?)\)/g
-    let match
+    let match: RegExpExecArray | null
     let modified = false
 
     while ((match = imgRegex.exec(content)) !== null) {
@@ -121,7 +96,6 @@ async function run() {
               const newUrl = await getWikimediaImageUrl(fileName)
               if (newUrl) {
                 console.log(`  成功修復: ${newUrl}`)
-                // 安全地替換 URL，避免正則表達式特殊字元影響
                 const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
                 content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
                 modified = true
