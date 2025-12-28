@@ -58,5 +58,5 @@
 
 ## 相關連結
 
-- **[北海道鐵路與地鐵指南](./鐵路與地鐵.md)**：包含普通列車、地鐵及路面電車資訊。
+- **[北海道鐵路與地鐵指南](./鐵路與地鐵)**：包含普通列車、地鐵及路面電車資訊。
 - [北海道鐵路旅客公司](https://www.jrhokkaido.co.jp/global/chinese/ticket/railpass/index.html)
