@@ -41,5 +41,5 @@
 
 ## 相關連結
 
-- [富士急巴士官網](https://www.fujikyubus.co.jp/)
+- [富士急巴士官網](https://bus.fujikyu.co.jp/)
 - [富士急行線電車官網](https://www.fujikyu-railway.jp/)
