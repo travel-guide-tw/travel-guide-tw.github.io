@@ -86,7 +86,17 @@ async function run() {
           )
 
           // 嘗試修復 Wikimedia 連結
-          if (url.includes('wikimedia.org')) {
+          let isWikimediaUrl = false
+          try {
+            const parsed = new URL(url)
+            const hostname = parsed.hostname.toLowerCase()
+            isWikimediaUrl =
+              hostname === 'wikimedia.org' ||
+              hostname.endsWith('.wikimedia.org')
+          } catch {
+            isWikimediaUrl = false
+          }
+          if (isWikimediaUrl) {
             const fileNameMatch =
               url.match(/\/commons\/[a-z0-9]+\/[a-z0-9]+\/([^/]+)/) ||
               url.match(/File:(.+)$/)
