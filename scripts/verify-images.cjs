@@ -5,6 +5,7 @@ const https = require('https')
 const docsDir = path.join(__dirname, '../docs')
 
 function getFiles(dir, fileList = []) {
+  if (!fs.existsSync(dir)) return []
   const files = fs.readdirSync(dir)
   files.forEach((file) => {
     const filePath = path.join(dir, file)
@@ -23,12 +24,22 @@ async function checkUrl(url) {
       url,
       {
         headers: { 'User-Agent': 'TravelGuideTW-Bot/1.0' },
+        timeout: 10000,
       },
       (res) => {
-        resolve(res.statusCode === 200)
+        // 接受 2xx 或 3xx (重新導向)
+        resolve(res.statusCode >= 200 && res.statusCode < 400)
       },
     )
-    req.on('error', () => resolve(false))
+    req.on('error', (err) => {
+      console.log(`  連線錯誤: ${err.message}`)
+      resolve(false)
+    })
+    req.on('timeout', () => {
+      req.destroy()
+      console.log(`  連線逾時`)
+      resolve(false)
+    })
     req.end()
   })
 }
@@ -52,6 +63,7 @@ async function getWikimediaImageUrl(fileName) {
         apiUrl,
         {
           headers: { 'User-Agent': 'TravelGuideTW-Bot/1.0' },
+          timeout: 10000,
         },
         (res) => {
           let data = ''
@@ -73,12 +85,15 @@ async function getWikimediaImageUrl(fileName) {
         },
       )
       .on('error', () => resolve(null))
+      .on('timeout', () => {
+        resolve(null)
+      })
   })
 }
 
 async function run() {
   const files = getFiles(docsDir)
-  console.log(`正在檢查 ${files.length} 個檔案...`)
+  console.log(`正在檢查 ${files.length} 個檔案中的圖片連結...`)
 
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
@@ -92,7 +107,7 @@ async function run() {
         const isValid = await checkUrl(url)
         if (!isValid) {
           console.log(
-            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效連結: ${url}`,
+            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片: ${url}`,
           )
 
           // 嘗試修復 Wikimedia 連結
@@ -102,11 +117,13 @@ async function run() {
               url.match(/File:(.+)$/)
             if (fileNameMatch) {
               const fileName = decodeURIComponent(fileNameMatch[1])
-              console.log(`  嘗試修復 Wikimedia 檔案: ${fileName}`)
+              console.log(`  嘗試從 Wikimedia API 獲取新連結: ${fileName}`)
               const newUrl = await getWikimediaImageUrl(fileName)
               if (newUrl) {
                 console.log(`  成功修復: ${newUrl}`)
-                content = content.replace(url, newUrl)
+                // 安全地替換 URL，避免正則表達式特殊字元影響
+                const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
+                content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
                 modified = true
               } else {
                 console.log(`  無法修復：找不到對應的 Wikimedia 檔案`)

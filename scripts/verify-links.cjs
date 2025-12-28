@@ -103,23 +103,33 @@ async function scan(target) {
     while ((match = linkRegex.exec(linksSection)) !== null) {
       totalLinks++
       const url = match[1]
-      
+
       const hostname = new URL(url).hostname
       const isBlacklisted = BLACKLIST_DOMAINS.some((domain) =>
         hostname.includes(domain),
       )
-      
+
       if (isBlacklisted) {
         console.log(`[非官方] ${relativePath}: ${url}`)
         errorCount++
       }
 
+      const isLikelyOfficial =
+        OFFICIAL_KEYWORDS.some((kw) => hostname.includes(kw)) ||
+        hostname.endsWith('.jp')
+
       const fetchResult = await checkUrl(url)
       if (!fetchResult.ok) {
-        console.log(`[失效] ${relativePath}: ${url} (理由: ${fetchResult.reason})`)
+        console.log(
+          `[失效] ${relativePath}: ${url} (理由: ${fetchResult.reason})`,
+        )
         errorCount++
       } else {
-        console.log(`[OK] ${relativePath}: ${url}`)
+        if (isLikelyOfficial) {
+          console.log(`[OK] ${relativePath}: ${url}`)
+        } else {
+          console.log(`[OK (非預設官方)] ${relativePath}: ${url}`)
+        }
       }
     }
   }
@@ -133,12 +143,14 @@ if (input && (input.startsWith('http') || input.includes(']('))) {
   // 處理單個連結
   const mdMatch = input.match(/.*?\[.*?\]\((https?:\/\/.*?)\)/)
   const url = mdMatch ? mdMatch[1] : input
-  
+
   console.log(`正在檢查單個連結: ${url}`)
-  checkUrl(url).then(res => {
-    if (res.ok) console.log(`OK (Status: ${res.status})`)
-    else console.log(`失敗: ${res.reason} (Status: ${res.status || 'N/A'})`)
-  }).catch(console.error)
+  checkUrl(url)
+    .then((res) => {
+      if (res.ok) console.log(`OK (Status: ${res.status})`)
+      else console.log(`失敗: ${res.reason} (Status: ${res.status || 'N/A'})`)
+    })
+    .catch(console.error)
 } else {
   // 處理檔案或目錄
   scan(input).catch(console.error)
