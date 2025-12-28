@@ -3,7 +3,6 @@ import path from 'node:path'
 
 const docsDir = path.join(import.meta.dirname, '../docs')
 
-// 黑名單：常見的個人部落格、心得分享網站、社群平台
 const BLACKLIST_DOMAINS = [
   'pixnet.net',
   'xuite.net',
@@ -21,17 +20,6 @@ const BLACKLIST_DOMAINS = [
   'itravelblog.net',
 ]
 
-// 建議的官方域名關鍵字
-const OFFICIAL_KEYWORDS = [
-  '.gov',
-  '.lg.jp',
-  '.or.jp',
-  'japan.travel',
-  'jnto',
-  'shizuoka-guide.com',
-  'fujisan-climb.jp',
-]
-
 function getFiles(dir: string, fileList: string[] = []): string[] {
   if (!fs.existsSync(dir)) return []
   if (fs.statSync(dir).isFile()) {
@@ -39,14 +27,14 @@ function getFiles(dir: string, fileList: string[] = []): string[] {
     return fileList
   }
   const files = fs.readdirSync(dir)
-  files.forEach((file) => {
+  for (const file of files) {
     const filePath = path.join(dir, file)
     if (fs.statSync(filePath).isDirectory()) {
       getFiles(filePath, fileList)
     } else if (filePath.endsWith('.md')) {
       fileList.push(filePath)
     }
-  })
+  }
   return fileList
 }
 
@@ -60,11 +48,10 @@ async function checkUrl(url: string) {
       },
       signal: AbortSignal.timeout(10000),
     })
-
-    if (response.ok) {
-      return { ok: true, status: response.status }
-    } else {
-      return { ok: false, status: response.status, reason: response.statusText }
+    return {
+      ok: response.status >= 200 && response.status < 400,
+      status: response.status,
+      reason: response.statusText,
     }
   } catch (error: any) {
     return { ok: false, reason: error.message }
@@ -72,12 +59,8 @@ async function checkUrl(url: string) {
 }
 
 async function scan(target: string | undefined) {
-  let files: string[] = []
-  if (!target) {
-    files = getFiles(docsDir)
-  } else {
-    files = getFiles(target)
-  }
+  const baseDir = target ? path.resolve(target) : docsDir
+  const files = getFiles(baseDir)
 
   if (files.length === 0) {
     console.log('找不到任何 Markdown 檔案。')
@@ -93,66 +76,68 @@ async function scan(target: string | undefined) {
     const content = fs.readFileSync(file, 'utf-8')
     const relativePath = path.relative(process.cwd(), file)
 
-    // 更寬鬆的正則表達式，允許標題前後有空格或分隔線
-    const sectionMatch = content.match(/## 相關連結\s*([\s\S]*?)(?=\n##|$)/)
-    if (!sectionMatch) continue
+    // Find the section by searching for the header "## 相關連結" or "### 相關連結"
+    const lines = content.split(/\r?\n/)
+    let inSection = false
+    let linksInSection: string[] = []
 
-    const linksSection = sectionMatch[1]
-    const linkRegex = /.*\[.*?\]\((https?:\/\/.*?)\)/g
-    let match: RegExpExecArray | null
+    for (const line of lines) {
+      if (line.trim().match(/^#+\s*相關連結/)) {
+        inSection = true
+        continue
+      }
+      if (inSection && line.trim().match(/^#+/)) {
+        inSection = false
+        continue
+      }
+      if (inSection) {
+        const linkMatches = line.matchAll(/\s*\[.*?\]\((https?:\/\/[^\s)]+)\)/g)
+        for (const m of linkMatches) {
+          linksInSection.push(m[1])
+        }
+      }
+    }
 
-    while ((match = linkRegex.exec(linksSection)) !== null) {
+    for (const url of linksInSection) {
       totalLinks++
-      const url = match[1]
+      let hostname = ''
+      try {
+        hostname = new URL(url).hostname
+      } catch (e) {
+        console.log(`[格式錯誤] ${relativePath}: ${url}`)
+        errorCount++
+        continue
+      }
 
-      const hostname = new URL(url).hostname
-      const isBlacklisted = BLACKLIST_DOMAINS.some((domain) =>
-        hostname.includes(domain),
-      )
-
-      if (isBlacklisted) {
-        console.log(`[非官方] ${relativePath}: ${url}`)
+      if (BLACKLIST_DOMAINS.some((domain) => hostname.includes(domain))) {
+        console.log(`[黑名單] ${relativePath}: ${url}`)
         errorCount++
       }
 
-      const isLikelyOfficial =
-        OFFICIAL_KEYWORDS.some((kw) => hostname.includes(kw)) ||
-        hostname.endsWith('.jp')
-
-      const fetchResult = await checkUrl(url)
-      if (!fetchResult.ok) {
+      const res = await checkUrl(url)
+      if (!res.ok) {
         console.log(
-          `[失效] ${relativePath}: ${url} (理由: ${fetchResult.reason})`,
+          `[失效] ${relativePath}: ${url} (理由：${res.reason || res.status})`,
         )
         errorCount++
       } else {
-        if (isLikelyOfficial) {
-          console.log(`[OK] ${relativePath}: ${url}`)
-        } else {
-          console.log(`[OK (非預設官方)] ${relativePath}: ${url}`)
-        }
+        console.log(`[OK] ${relativePath}: ${url}`)
       }
     }
   }
 
-  console.log(`\n掃描完畢。連結總數: ${totalLinks}, 問題總數: ${errorCount}`)
+  console.log(`\n掃描完畢。連結總數：${totalLinks}, 問題總數：${errorCount}`)
 }
 
 const input = process.argv[2]
-
 if (input && (input.startsWith('http') || input.includes(']('))) {
-  // 處理單個連結
-  const mdMatch = input.match(/.*\[.*?]\]\((https?:\/\/.*?)\)/)
-  const url = mdMatch ? mdMatch[1] : input
-
-  console.log(`正在檢查單個連結: ${url}`)
-  checkUrl(url)
-    .then((res) => {
-      if (res.ok) console.log(`OK (Status: ${res.status})`)
-      else console.log(`失敗: ${res.reason} (Status: ${res.status || 'N/A'})`)
-    })
-    .catch(console.error)
+  const urlMatch = input.match(/https?:\/\/[^\s)]+/) // Corrected regex to avoid trailing parenthesis
+  const url = urlMatch ? urlMatch[0] : input
+  console.log(`正在檢查單個連結：${url}`)
+  checkUrl(url).then((res) => {
+    if (res.ok) console.log(`OK (Status: ${res.status})`)
+    else console.log(`失敗：${res.reason} (Status: ${res.status || 'N/A'})`)
+  })
 } else {
-  // 處理檔案或目錄
   scan(input).catch(console.error)
 }

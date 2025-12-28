@@ -1,0 +1,49 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "北海道交通指南",
+  "description": "北海道交通指南，包含飛機、鐵路（JR）、巴士及租車自駕的詳細資訊，協助旅客規劃北海道旅遊行程。",
+  "breadcrumb": "日本 > 北海道 > 交通",
+  "inLanguage": "zh-TW",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "機場交通",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/機場"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "鐵路與地鐵",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/鐵路與地鐵"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "JR 北海道鐵路周遊券",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/JR 北海道鐵路周遊券"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "巴士交通",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/巴士"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "租車自駕",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/租車"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "渡輪與觀光船",
+        "url": "https://travel-guide-tw.github.io/日本/北海道/交通/渡輪"
+      }
+    ]
+  }
+}

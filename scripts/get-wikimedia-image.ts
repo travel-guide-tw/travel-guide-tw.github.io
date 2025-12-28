@@ -62,7 +62,28 @@ async function getWikimediaImageUrl(input: string | undefined) {
     const imageInfo = pages[pageId].imageinfo
     if (imageInfo && imageInfo.length > 0) {
       const url = imageInfo[0].url
-      console.log(url)
+
+      // 自動檢查圖片網址是否有效
+      try {
+        const verifyRes = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'User-Agent': 'TravelGuideTW/1.0',
+          },
+          signal: AbortSignal.timeout(5000),
+        })
+        if (verifyRes.ok) {
+          console.log(url)
+        } else {
+          console.error(
+            `[無效連結] 獲取的網址回傳狀態碼 ${verifyRes.status}: ${url}`,
+          )
+          process.exit(1)
+        }
+      } catch (e: any) {
+        console.error(`[連線失敗] 無法驗證獲取的網址 (${e.message}): ${url}`)
+        process.exit(1)
+      }
     } else {
       console.error(`無法獲取圖片連結：${title}`)
       process.exit(1)
