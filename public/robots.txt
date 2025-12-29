@@ -1,5 +1,5 @@
 # Disallow crawling of all .html pages
 User-agent: *
-Disallow: /*.html$
+Disallow:
 
 Sitemap: https://travel-guide-tw.github.io/sitemap.xml
