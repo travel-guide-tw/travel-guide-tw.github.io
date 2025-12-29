@@ -15,6 +15,7 @@ import linkPreviewPlugin, {
   createPreviewLinkOGDataJsonFile,
 } from './typescript/node/linkPreviewPlugin'
 import { SiteConfig } from 'vitepress'
+import { json } from 'stream/consumers'
 
 const hostname = 'https://travel-guide-tw.github.io/'
 const title = '開源旅遊共筆'
@@ -89,9 +90,11 @@ export default withMermaid({
       $('img')?.attr('src') ||
       'https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a'
 
-    const encodedUrl = encodeURIComponent(
-      hostname + pageData.relativePath.replace('.md', '').replace('index', ''),
-    )
+    const encodedUrl =
+      hostname +
+      encodeURIComponent(
+        pageData.relativePath.replace('.md', '').replace('index', ''),
+      )
 
     head.push(['meta', { property: 'og:title', content: pageTitle }])
     head.push(['meta', { property: 'og:type', content: 'article' }])
@@ -105,13 +108,19 @@ export default withMermaid({
     ])
     head.push([
       'meta',
-      { property: 'og:description', content: $('p').text().trim() },
+      {
+        property: 'og:description',
+        content:
+          pageData.frontmatter.description || $('p').first().text().trim(),
+      },
     ])
     head.push(['meta', { property: 'og:locale', content: 'zh-TW' }])
-    head.push(['meta', { property: 'og:site_name', content: title }])
     head.push([
       'meta',
-      { property: 'og:updated_time', content: new Date().toISOString() },
+      {
+        property: 'og:updated_time',
+        content: new Date(pageData.lastUpdated ?? 0).toISOString(),
+      },
     ])
     head.push(['link', { rel: 'canonical', href: encodedUrl }])
 
