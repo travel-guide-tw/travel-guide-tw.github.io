@@ -2,7 +2,7 @@ import MarkdownIt, { StateCore, Token } from 'markdown-it'
 import ogs from 'open-graph-scraper'
 import fs from 'fs'
 import path from 'path'
-import fnv1a from '../../utils/fnv1a'
+import getHash from '../../utils/getHash'
 
 const previewLinkUrls = new Set<string>()
 const oneYearInMs = 365 * 24 * 60 * 60 * 1000
@@ -83,17 +83,20 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
   await fs.promises.mkdir(previewDir, { recursive: true })
 
   const urlArray = Array.from(previewLinkUrls)
+  console.log(`🔍 Total URLs to process for OG data: ${urlArray.length}`)
 
   for (let i = 0; i < urlArray.length; i += CONCURRENCY_LIMIT) {
     const chunk = urlArray.slice(i, i + CONCURRENCY_LIMIT)
+    console.log(`📦 Processing batch ${i / CONCURRENCY_LIMIT + 1}/${Math.ceil(urlArray.length / CONCURRENCY_LIMIT)} (${chunk.length} URLs)...`)
 
     await Promise.allSettled(
       chunk.map(async (url) => {
         try {
-          const hash = fnv1a(url)
+          const hash = getHash(url)
           const filePath = path.join(previewDir, `${hash}.json`)
-
+          console.log(`exists: ${hash}`)
           if (fs.existsSync(filePath)) {
+            console.log(`skipping: ${url}/${hash}--${filePath}`)
             const fileStats = await fs.promises.stat(filePath)
             if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) return
           }
