@@ -142,6 +142,6 @@ export default withMermaid({
     return head
   },
   buildEnd: async (siteConfig: SiteConfig) => {
-    await createPreviewLinkOGDataJsonFile()
+    createPreviewLinkOGDataJsonFile()
   },
 })
