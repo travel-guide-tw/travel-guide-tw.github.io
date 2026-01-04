@@ -94,11 +94,13 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
         try {
           const hash = getHash(url)
           const filePath = path.join(previewDir, `${hash}.json`)
-          console.log(`exists: ${hash}`)
           if (fs.existsSync(filePath)) {
-            console.log(`skipping: ${url}/${hash}--${filePath}`)
             const fileStats = await fs.promises.stat(filePath)
-            if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) return
+            if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) {
+              console.log(`⏭️  Cached (fresh): ${url}`)
+              return
+            }
+            console.log(`🔄 Cache stale, refetching: ${url}`)
           }
           const ogOptions = {
             url,
