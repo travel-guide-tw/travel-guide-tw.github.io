@@ -2,7 +2,7 @@
 import { OgObject } from 'open-graph-scraper/types/lib/types'
 import { onMounted, ref, computed } from 'vue'
 
-import getHash from '../utils/getHash'
+import fnv1a from '../utils/fnv1a'
 
 const props = defineProps({
   url: {
@@ -30,7 +30,7 @@ onMounted(async () => {
   console.log('PreviewLink: Fetching OG data for URL:', url)
 
   try {
-    const hash = getHash(url)
+    const hash = fnv1a(url)
     const response = await fetch(`/json/preview/${hash}.json`, {
       headers: {
         'Content-Type': 'application/json',

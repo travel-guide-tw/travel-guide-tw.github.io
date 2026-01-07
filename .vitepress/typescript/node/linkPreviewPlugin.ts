@@ -83,24 +83,19 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
   await fs.promises.mkdir(previewDir, { recursive: true })
 
   const urlArray = Array.from(previewLinkUrls)
-  console.log(`🔍 Total URLs to process for OG data: ${urlArray.length}`)
 
   for (let i = 0; i < urlArray.length; i += CONCURRENCY_LIMIT) {
     const chunk = urlArray.slice(i, i + CONCURRENCY_LIMIT)
-    console.log(`📦 Processing batch ${i / CONCURRENCY_LIMIT + 1}/${Math.ceil(urlArray.length / CONCURRENCY_LIMIT)} (${chunk.length} URLs)...`)
 
     await Promise.allSettled(
       chunk.map(async (url) => {
         try {
           const hash = getHash(url)
           const filePath = path.join(previewDir, `${hash}.json`)
+
           if (fs.existsSync(filePath)) {
             const fileStats = await fs.promises.stat(filePath)
-            if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) {
-              console.log(`⏭️  Cached (fresh): ${url}`)
-              return
-            }
-            console.log(`🔄 Cache stale, refetching: ${url}`)
+            if (Date.now() - fileStats.mtime.getTime() < oneYearInMs) return
           }
           const ogOptions = {
             url,
