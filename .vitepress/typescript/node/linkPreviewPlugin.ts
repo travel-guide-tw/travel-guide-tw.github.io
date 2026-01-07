@@ -2,7 +2,7 @@ import MarkdownIt, { StateCore, Token } from 'markdown-it'
 import ogs from 'open-graph-scraper'
 import fs from 'fs'
 import path from 'path'
-import fnv1a from '../../utils/fnv1a'
+import getHash from '../../utils/getHash'
 
 const previewLinkUrls = new Set<string>()
 const oneYearInMs = 365 * 24 * 60 * 60 * 1000
@@ -90,7 +90,7 @@ export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
     await Promise.allSettled(
       chunk.map(async (url) => {
         try {
-          const hash = fnv1a(url)
+          const hash = getHash(url)
           const filePath = path.join(previewDir, `${hash}.json`)
 
           if (fs.existsSync(filePath)) {
