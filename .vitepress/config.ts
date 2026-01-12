@@ -92,9 +92,12 @@ export default withMermaid({
 
     const encodedUrl =
       hostname +
-      encodeURIComponent(
-        pageData.relativePath.replace('.md', '').replace('index', ''),
-      )
+      pageData.relativePath
+        .replace('.md', '')
+        .replace('index', '')
+        .split('/')
+        .map(encodeURIComponent)
+        .join('/')
 
     head.push(['meta', { property: 'og:title', content: pageTitle }])
     head.push(['meta', { property: 'og:type', content: 'article' }])
