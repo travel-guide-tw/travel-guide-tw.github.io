@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "岐阜",
+  "description": "岐阜縣位於日本中部地區，以其保存完好的傳統建築、壯麗的山脈和悠久的歷史而聞名。從世界遺產白川鄉到古色古香的高山老街，岐阜縣為遊客提供了豐富的文化與自然體驗。",
+  "keywords": [
+    "岐阜",
+    "岐阜景點",
+    "岐阜旅遊",
+    "白川鄉",
+    "高山老街",
+    "下呂溫泉"
+  ],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/岐阜",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "岐阜縣",
+    "addressLocality": "岐阜市"
+  },
+  "knowsAbout": [
+    { "@type": "TouristAttraction", "name": "白川鄉" },
+    { "@type": "TouristAttraction", "name": "高山老街" },
+    { "@type": "TouristAttraction", "name": "下呂溫泉" },
+    { "@type": "TouristAttraction", "name": "馬籠宿" },
+    { "@type": "TouristAttraction", "name": "岐阜城" },
+    { "@type": "TouristAttraction", "name": "奧飛驒溫泉鄉" }
+  ]
+}

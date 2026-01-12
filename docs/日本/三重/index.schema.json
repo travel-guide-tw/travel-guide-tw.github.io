@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "三重",
+  "description": "三重縣位於日本近畿地區，擁有日本最高地位的「伊勢神宮」、著名的鈴鹿賽道以及壯麗的鳥羽志摩海岸。",
+  "keywords": ["三重", "伊勢神宮", "鈴鹿賽道", "鳥羽水族館", "松阪牛"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/三重",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "三重縣",
+    "addressLocality": "津市"
+  },
+  "knowsAbout": [
+    { "@type": "Place", "name": "伊勢神宮" },
+    { "@type": "TouristAttraction", "name": "長島溫泉樂園" },
+    { "@type": "TouristAttraction", "name": "鳥羽水族館" }
+  ]
+}

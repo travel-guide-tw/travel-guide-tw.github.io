@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "福井",
+  "description": "福井縣位於日本北陸地區，以其世界級的恐龍博物館、古老的永平寺以及壯麗的越前海岸聞名。",
+  "keywords": ["福井", "恐龍博物館", "永平寺", "東尋坊", "北陸旅遊"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/福井",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福井縣",
+    "addressLocality": "福井市"
+  },
+  "knowsAbout": [
+    { "@type": "TouristAttraction", "name": "福井縣立恐龍博物館" },
+    { "@type": "TouristAttraction", "name": "東尋坊" },
+    { "@type": "Place", "name": "永平寺" }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "長野",
+  "description": "長野縣位於日本中部地區，被稱為「日本的屋脊」，以壯麗的阿爾卑斯山脈、古老的善光寺以及滑雪聖地聞名。",
+  "keywords": ["長野", "輕井澤", "上高地", "松本城", "滑雪"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/長野",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "長野縣",
+    "addressLocality": "長野市"
+  },
+  "knowsAbout": [
+    { "@type": "Place", "name": "善光寺" },
+    { "@type": "TouristAttraction", "name": "松本城" },
+    { "@type": "Place", "name": "上高地" },
+    { "@type": "TouristAttraction", "name": "妻籠宿" }
+  ]
+}
