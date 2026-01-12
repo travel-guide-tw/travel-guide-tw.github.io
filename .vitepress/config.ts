@@ -15,12 +15,15 @@ import linkPreviewPlugin, {
   createPreviewLinkOGDataJsonFile,
 } from './typescript/node/linkPreviewPlugin'
 import { SiteConfig } from 'vitepress'
-import { json } from 'stream/consumers'
+import llmstxt from 'vitepress-plugin-llms'
 
 const hostname = 'https://travel-guide-tw.github.io/'
 const title = '開源旅遊共筆'
 
 export default withMermaid({
+  vite: {
+    plugins: [llmstxt()],
+  },
   base: '/',
   description: pkg.description,
   lang: 'zh-Hant-TW',
