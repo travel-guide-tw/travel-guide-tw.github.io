@@ -20,8 +20,8 @@
     "addressLocality": "富山市"
   },
   "knowsAbout": [
-    { "@type": "Mountain", "name": "立山連峰" },
-    { "@type": "Park", "name": "富岩運河環水公園" },
-    { "@type": "Place", "name": "室堂" }
+    { "@type": "TouristAttraction", "name": "立山黑部" },
+    { "@type": "TouristAttraction", "name": "雪之大谷" },
+    { "@type": "TouristAttraction", "name": "五箇山" }
   ]
 }

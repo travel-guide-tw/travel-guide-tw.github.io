@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AdministrativeArea",
+  "name": "石川",
+  "description": "石川縣位於日本北陸地區，以其深厚的加賀百萬石文化、精緻的傳統工藝以及美味的海鮮聞名。首府金澤市擁有日本三大名園之一的兼六園，是感受日本傳統美學的絕佳之地。",
+  "keywords": ["石川", "金澤", "兼六園", "金澤城", "東茶屋街", "北陸旅遊"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/石川",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "石川縣",
+    "addressLocality": "金澤市"
+  },
+  "knowsAbout": [
+    { "@type": "TouristAttraction", "name": "兼六園" },
+    { "@type": "TouristAttraction", "name": "金澤城公園" },
+    { "@type": "TouristAttraction", "name": "東茶屋街" }
+  ]
+}
