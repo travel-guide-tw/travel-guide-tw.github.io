@@ -36,6 +36,10 @@ jobs:
       - name: Build VitePress site
         run: npm run build
 
+      - name: Create Redirects
+        run: |
+          npx tsx scripts/create-moved-redirects.ts
+
       - name: Prepare Deployment Directory
         run: |
           mkdir -p .vitepress/dist/json/preview
