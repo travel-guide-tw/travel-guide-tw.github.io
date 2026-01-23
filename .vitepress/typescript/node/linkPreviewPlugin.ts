@@ -80,7 +80,9 @@ export default function linkPreviewPlugin(md: MarkdownIt): void {
 
 export async function createPreviewLinkOGDataJsonFile(): Promise<void> {
   if (process.env.VITE_FETCH_LINK_PREVIEW !== 'true') {
-    console.log('⏭️ Skipping link preview fetching (VITE_FETCH_LINK_PREVIEW is not true)')
+    console.log(
+      '⏭️ Skipping link preview fetching (VITE_FETCH_LINK_PREVIEW is not true)',
+    )
     return
   }
   const previewDir = path.resolve(process.cwd(), 'public/json/preview/')
