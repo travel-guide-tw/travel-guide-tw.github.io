@@ -49,7 +49,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.0.9",
     "autocorrect-node": "^2.14.0",
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.2.0",
     "dotenv": "^17.2.3",
     "glob": "^13.0.0",
     "husky": "^8.0.3",
