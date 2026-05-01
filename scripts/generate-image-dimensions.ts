@@ -74,7 +74,14 @@ async function run() {
 
     console.log(`Processing ${url}...`)
 
-    if (url.includes('wikimedia.org')) {
+    let isWikimediaUrl = false
+    try {
+      const parsedUrl = new URL(url)
+      const host = parsedUrl.hostname.toLowerCase()
+      isWikimediaUrl = host === 'wikimedia.org' || host.endsWith('.wikimedia.org')
+    } catch {}
+
+    if (isWikimediaUrl) {
       const fileNameMatch =
         url.match(/\/commons\/[a-z0-9]+\/[a-z0-9]+\/([^/]+)/) ||
         url.match(/File:(.+)$/)
