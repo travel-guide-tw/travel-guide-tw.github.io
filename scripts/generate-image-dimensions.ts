@@ -57,7 +57,7 @@ async function run() {
 
   const files = getFiles(docsDir)
   const imageUrls = new Set<string>()
-  const imgRegex = /!\[(.*?)\]\(((?:[^()]+|\([^()]*\))*)\)/g
+  const imgRegex = /!\[(.*?)\]\(((?:\([^()]*\)|[^()\s])+)\)/g
 
   for (const file of files) {
     const content = fs.readFileSync(file, 'utf-8')
