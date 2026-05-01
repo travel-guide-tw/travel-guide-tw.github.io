@@ -120,8 +120,8 @@ async function run() {
     }
 
     batchCount++
-    if (batchCount >= 10) {
-      console.log('Stopping turn to avoid timeout. Run again to continue.')
+    if (batchCount >= 50) {
+      console.log('Stopping batch to avoid potential timeout. Run again to continue.')
       break
     }
   }
