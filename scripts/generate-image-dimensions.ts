@@ -110,7 +110,7 @@ async function run() {
       dimensions[url] = { width: result.width, height: result.height }
       console.log(`  Success (Probe): ${result.width}x${result.height}`)
       fs.writeFileSync(outputJson, JSON.stringify(dimensions, null, 2))
-      await sleep(10000) // 10s wait after probe to avoid 429
+      await sleep(1000) // 1s wait after probe is usually sufficient
     } catch (e: any) {
       console.error(`  Failed: ${e.message}`)
       if (e.message.includes('429')) {
