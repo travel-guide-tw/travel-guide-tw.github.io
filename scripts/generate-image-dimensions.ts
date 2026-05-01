@@ -37,6 +37,7 @@ async function getWikimediaImageInfo(fileName: string) {
         headers: { 'User-Agent': 'TravelGuideTW-Bot/1.0' },
       })
       const data = (await response.json()) as any
+      if (!data.query?.pages) return null
       const pages = data.query.pages
       const pageId = Object.keys(pages)[0]
       if (pageId !== '-1' && pages[pageId].imageinfo) {
