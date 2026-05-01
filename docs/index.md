@@ -4,7 +4,7 @@
 
 這個網站的目的是為了提供一個集中、易於更新的旅遊資訊平台。
 
-![Untitled](https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a)
+<img src="https://github.com/user-attachments/assets/c0d2f761-819b-43df-8e7e-b45db22f268a" alt="Untitled" width="688" height="688" style="aspect-ratio: 688 / 688;">
 
 ## 網站特色
 

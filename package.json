@@ -10,6 +10,7 @@
     "build": "vitepress build ./",
     "check": "npx prettier --check .",
     "format": "npx prettier --write .",
+    "gen:img": "npx tsx scripts/generate-image-dimensions.ts",
     "prepare": "husky install"
   },
   "repository": {
@@ -58,6 +59,7 @@
     "mermaid": "^11.12.2",
     "open-graph-scraper": "^6.10.0",
     "prettier": "^3.7.4",
+    "probe-image-size": "^7.2.3",
     "sass": "^1.97.2",
     "segment": "^0.1.3",
     "vitepress": "^v2.0.0-alpha.15",

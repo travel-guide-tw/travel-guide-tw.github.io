@@ -1,6 +1,6 @@
 # Zytglogge
 
-![Zytglogge photo by Huang An Sheng](https://i.imgur.com/jHenIgJ.jpg)
+<img src="https://i.imgur.com/jHenIgJ.jpg" alt="Zytglogge photo by Huang An Sheng" width="1170" height="1223" style="aspect-ratio: 1170 / 1223;">
 
 位於伯恩市中心的鐘樓，是個相當顯著的地標，也是許多去伯恩旅行的旅行團會選擇的集結點。
 
