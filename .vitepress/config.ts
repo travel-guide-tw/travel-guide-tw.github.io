@@ -73,6 +73,7 @@ export default withMermaid({
     }
   },
   srcDir: '.',
+  srcExclude: ['**/AGENTS.md'],
   cleanUrls: true,
   markdown: {
     config: (md) => {
