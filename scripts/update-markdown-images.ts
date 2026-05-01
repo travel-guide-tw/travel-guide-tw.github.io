@@ -32,24 +32,59 @@ async function run() {
 
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
-    // Regex explanation:
-    // !\[(.*?)\] - matches the alt text
-    // \( - matches the opening parenthesis of the URL
-    // ( - start of URL capture group
-    //   (?:[^()]+|\([^()]*\))* - matches non-parentheses OR one level of balanced parentheses
-    // ) - end of URL capture group
-    // \) - matches the closing parenthesis of the URL
-    const imgRegex = /!\[(.*?)\]\(((?:[^()]+|\([^()]*\))*)\)/g
     let modified = false
 
-    content = content.replace(imgRegex, (match, alt, url) => {
+    let result = ''
+    let i = 0
+
+    while (i < content.length) {
+      const start = content.indexOf('![', i)
+      if (start === -1) {
+        result += content.slice(i)
+        break
+      }
+
+      result += content.slice(i, start)
+
+      const altEnd = content.indexOf(']', start + 2)
+      if (altEnd === -1 || altEnd + 1 >= content.length || content[altEnd + 1] !== '(') {
+        result += content.slice(start, start + 2)
+        i = start + 2
+        continue
+      }
+
+      const alt = content.slice(start + 2, altEnd)
+      let j = altEnd + 2
+      let depth = 1
+
+      while (j < content.length && depth > 0) {
+        const ch = content[j]
+        if (ch === '(') depth++
+        else if (ch === ')') depth--
+        j++
+      }
+
+      if (depth !== 0) {
+        result += content.slice(start, start + 2)
+        i = start + 2
+        continue
+      }
+
+      const url = content.slice(altEnd + 2, j - 1)
+      const fullMatch = content.slice(start, j)
       const dim = dimensions[url]
+
       if (dim) {
         modified = true
-        return `<img src="${url}" alt="${alt}" width="${dim.width}" height="${dim.height}" style="aspect-ratio: ${dim.width} / ${dim.height};">`
+        result += `<img src="${url}" alt="${alt}" width="${dim.width}" height="${dim.height}" style="aspect-ratio: ${dim.width} / ${dim.height};">`
+      } else {
+        result += fullMatch
       }
-      return match
-    })
+
+      i = j
+    }
+
+    content = result
 
     if (modified) {
       fs.writeFileSync(file, content)
