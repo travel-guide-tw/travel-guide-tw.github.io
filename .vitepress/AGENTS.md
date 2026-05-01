@@ -7,6 +7,7 @@
 ## 架構
 
 - `.vitepress/config.ts` 是主要 VitePress 設定。它串接 Mermaid、本地搜尋、編輯連結、自動產生側邊欄、rewrites、Open Graph metadata、schema 注入與 link preview 快取產生。
+- `.vitepress/image-dimensions.json` 儲存遠端圖片的尺寸資料，用於優化 CLS。此檔案應被 commit 到儲存庫中。
 - `.vitepress/typescript/node/generateSidebar.ts` 會從 `docs/` 下的 Markdown 路徑建立側邊欄。
 - `.vitepress/typescript/node/generateRewrites.ts` 會把 `docs/` 原始路徑映射到公開 clean path，並移除公開 URL 中的底線。
 - `.vitepress/typescript/node/linkPreviewPlugin.ts` 處理外部連結的 preview 資料。
