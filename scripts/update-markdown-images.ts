@@ -47,7 +47,11 @@ async function run() {
       result += content.slice(i, start)
 
       const altEnd = content.indexOf(']', start + 2)
-      if (altEnd === -1 || altEnd + 1 >= content.length || content[altEnd + 1] !== '(') {
+      if (
+        altEnd === -1 ||
+        altEnd + 1 >= content.length ||
+        content[altEnd + 1] !== '('
+      ) {
         result += content.slice(start, start + 2)
         i = start + 2
         continue

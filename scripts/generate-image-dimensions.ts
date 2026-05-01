@@ -79,7 +79,8 @@ async function run() {
     try {
       const parsedUrl = new URL(url)
       const host = parsedUrl.hostname.toLowerCase()
-      isWikimediaUrl = host === 'wikimedia.org' || host.endsWith('.wikimedia.org')
+      isWikimediaUrl =
+        host === 'wikimedia.org' || host.endsWith('.wikimedia.org')
     } catch {}
 
     if (isWikimediaUrl) {
@@ -121,7 +122,9 @@ async function run() {
 
     batchCount++
     if (batchCount >= 50) {
-      console.log('Stopping batch to avoid potential timeout. Run again to continue.')
+      console.log(
+        'Stopping batch to avoid potential timeout. Run again to continue.',
+      )
       break
     }
   }
