@@ -18,20 +18,39 @@ function getFiles(dir: string, fileList: string[] = []): string[] {
 }
 
 async function checkUrl(url: string): Promise<boolean> {
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'User-Agent': 'TravelGuideTW-Bot/1.0',
-      },
-      signal: AbortSignal.timeout(10000),
-    })
-    // Accept 2xx or 3xx (Redirects)
-    return response.status >= 200 && response.status < 400
-  } catch (error: any) {
-    console.log(`  連線錯誤: ${error.message}`)
-    return false
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Accept: 'image/*',
+          'User-Agent': 'TravelGuideTW-Bot/1.0',
+        },
+        signal: AbortSignal.timeout(10000),
+      })
+      // Accept 2xx or 3xx (Redirects); retry Wikimedia rate limits briefly.
+      if (response.status === 429 && attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        continue
+      }
+      if (response.status >= 400) {
+        console.log(`  HTTP 回應：${response.status}`)
+        return false
+      }
+      const contentType = response.headers.get('content-type')?.toLowerCase()
+      if (!contentType?.startsWith('image/')) {
+        console.log(`  非圖片回應：${contentType ?? 'missing Content-Type'}`)
+        return false
+      }
+      return true
+    } catch (error: any) {
+      if (attempt === 2) {
+        console.log(`  連線錯誤: ${error.message}`)
+        return false
+      }
+    }
   }
+  return false
 }
 
 async function getWikimediaImageUrl(fileName: string): Promise<string | null> {
@@ -73,45 +92,53 @@ async function run(targetDir?: string) {
 
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
-    const imgRegex = /!\[.*?\]\((.*?)\)/g
-    let match: RegExpExecArray | null
+    const imageRegexes = [
+      /!\[[^\]]*\]\((\S+?)(?:\s+"[^"]*")?\)/g,
+      /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
+    ]
     let modified = false
 
-    while ((match = imgRegex.exec(content)) !== null) {
-      const url = match[1]
-      if (url.startsWith('http')) {
-        const isValid = await checkUrl(url)
-        if (!isValid) {
-          console.log(
-            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片：${url}`,
-          )
+    for (const imgRegex of imageRegexes) {
+      let match: RegExpExecArray | null
+      while ((match = imgRegex.exec(content)) !== null) {
+        const url = match[1]
+        if (url.startsWith('http')) {
+          const isValid = await checkUrl(url)
+          if (!isValid) {
+            console.log(
+              `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片：${url}`,
+            )
 
-          // 嘗試修復 Wikimedia 連結
-          let isWikimediaUrl = false
-          try {
-            const parsed = new URL(url)
-            const hostname = parsed.hostname.toLowerCase()
-            isWikimediaUrl =
-              hostname === 'wikimedia.org' ||
-              hostname.endsWith('.wikimedia.org')
-          } catch {
-            isWikimediaUrl = false
-          }
-          if (isWikimediaUrl) {
-            const fileNameMatch =
-              url.match(/\/commons\/[a-z0-9]+\/[a-z0-9]+\/([^/]+)/) ||
-              url.match(/File:(.+)$/)
-            if (fileNameMatch) {
-              const fileName = decodeURIComponent(fileNameMatch[1])
-              console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
-              const newUrl = await getWikimediaImageUrl(fileName)
-              if (newUrl) {
-                console.log(`  成功修復：${newUrl}`)
-                const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
-                content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
-                modified = true
-              } else {
-                console.log(`  無法修復：找不到對應的 Wikimedia 檔案`)
+            // 嘗試修復 Wikimedia 連結
+            let isWikimediaUrl = false
+            try {
+              const parsed = new URL(url)
+              const hostname = parsed.hostname.toLowerCase()
+              isWikimediaUrl =
+                hostname === 'wikimedia.org' ||
+                hostname.endsWith('.wikimedia.org')
+            } catch {
+              isWikimediaUrl = false
+            }
+            if (isWikimediaUrl) {
+              const fileNameMatch = url.match(
+                /\/commons\/(?:(thumb)\/)?[a-z0-9]+\/[a-z0-9]+\/(?:[^/]+\/)?([^/]+)$/,
+              )
+              if (fileNameMatch) {
+                const fileName = decodeURIComponent(fileNameMatch[2])
+                const normalizedFileName = fileNameMatch[1]
+                  ? fileName.replace(/^\d+px-/, '')
+                  : fileName
+                console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
+                const newUrl = await getWikimediaImageUrl(normalizedFileName)
+                if (newUrl) {
+                  console.log(`  成功修復：${newUrl}`)
+                  const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
+                  content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
+                  modified = true
+                } else {
+                  console.log(`  無法修復：找不到對應的 Wikimedia 檔案`)
+                }
               }
             }
           }
