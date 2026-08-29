@@ -45,7 +45,7 @@ async function checkUrl(url: string): Promise<boolean> {
       return true
     } catch (error: any) {
       if (attempt === 2) {
-        console.log(`  連線錯誤: ${error.message}`)
+        console.log(`  連線錯誤：${error.message}`)
         return false
       }
     }
