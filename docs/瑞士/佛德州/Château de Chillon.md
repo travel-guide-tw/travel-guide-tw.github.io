@@ -1,6 +1,6 @@
 # Château de Chillon
 
-![Château de Chillon photo by Huang An Sheng](https://i.imgur.com/9fQOK1j.jpg)
+<img src="https://i.imgur.com/9fQOK1j.jpg" alt="Château de Chillon photo by Huang An Sheng" width="1420" height="1137" style="aspect-ratio: 1420 / 1137;">
 
 又名 Chillon Castle 是瑞士最著名的古堡之一，位於日內瓦湖畔，湖的對岸是瑞士法國邊界，距離蒙特勒約 3 公里，是瑞士最受歡迎的旅遊景點之一。
 

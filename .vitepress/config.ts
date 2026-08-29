@@ -60,6 +60,18 @@ export default withMermaid({
   rewrites: generateRewrites(),
   sitemap: {
     hostname,
+    lastmodDateOnly: true,
+    xmlns: {
+      news: false,
+      video: false,
+      image: false,
+      xhtml: false,
+    },
+    transformItems(items) {
+      return items.filter(
+        ({ url }) => !['README', 'CONTRIBUTING'].includes(url),
+      )
+    },
   },
   lastUpdated: true,
   async transformPageData({ relativePath, title, ...rest }) {
@@ -73,6 +85,7 @@ export default withMermaid({
     }
   },
   srcDir: '.',
+  srcExclude: ['**/AGENTS.md'],
   cleanUrls: true,
   markdown: {
     config: (md) => {

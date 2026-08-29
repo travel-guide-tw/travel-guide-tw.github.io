@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "秩父",
+  "description": "秩父位於埼玉縣西部，以秩父神社、羊山公園的芝櫻、三峯神社與山岳自然景觀聞名。",
+  "keywords": ["秩父", "埼玉旅遊", "秩父神社", "羊山公園", "三峯神社"],
+  "inLanguage": "zh-TW",
+  "url": "https://travel-guide-tw.github.io/日本/埼玉/秩父",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "埼玉縣",
+    "addressLocality": "秩父市"
+  }
+}
