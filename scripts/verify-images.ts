@@ -85,6 +85,38 @@ async function getWikimediaImageUrl(fileName: string): Promise<string | null> {
   }
 }
 
+function getMarkdownImageUrls(content: string): string[] {
+  const urls: string[] = []
+  let searchStart = 0
+
+  while (true) {
+    const imageStart = content.indexOf('![', searchStart)
+    if (imageStart === -1) break
+
+    const labelEnd = content.indexOf(']', imageStart + 2)
+    const openParen = labelEnd === -1 ? -1 : content.indexOf('(', labelEnd)
+    if (openParen === -1) {
+      searchStart = imageStart + 2
+      continue
+    }
+
+    let depth = 1
+    let end = openParen + 1
+    while (end < content.length && depth > 0) {
+      if (content[end] === '(') depth++
+      if (content[end] === ')') depth--
+      end++
+    }
+    if (depth !== 0) break
+
+    const destination = content.slice(openParen + 1, end - 1)
+    urls.push(destination.trim().replace(/\s+"[^"]*"$/, ''))
+    searchStart = end
+  }
+
+  return urls
+}
+
 async function run(targetDir?: string) {
   const baseDir = targetDir ? path.resolve(targetDir) : docsDir
   const files = getFiles(baseDir)
@@ -92,60 +124,58 @@ async function run(targetDir?: string) {
 
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
-    const imageRegexes = [
-      /!\[(.*?)\]\(((?:[^()]+|\([^()]*\))*)\)/g,
-      /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
-    ]
+    const imageUrls = getMarkdownImageUrls(content)
+    const htmlImageRegex = /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi
+    let htmlMatch: RegExpExecArray | null
+    while ((htmlMatch = htmlImageRegex.exec(content)) !== null) {
+      imageUrls.push(htmlMatch[1])
+    }
     let modified = false
 
-    for (const imgRegex of imageRegexes) {
-      let match: RegExpExecArray | null
-      while ((match = imgRegex.exec(content)) !== null) {
-        const url = (match[2] ?? match[1]).trim().replace(/\s+"[^"]*"$/, '')
-        if (url.startsWith('http')) {
-          const isValid = await checkUrl(url)
-          if (!isValid) {
-            console.log(
-              `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片：${url}`,
-            )
+    for (const url of imageUrls) {
+      if (url.startsWith('http')) {
+        const isValid = await checkUrl(url)
+        if (!isValid) {
+          console.log(
+            `[失效] 在 ${path.relative(process.cwd(), file)} 發現失效圖片：${url}`,
+          )
 
-            // 嘗試修復 Wikimedia 連結
-            let isWikimediaUrl = false
-            let parsed: URL | null = null
-            try {
-              parsed = new URL(url)
-              const hostname = parsed.hostname.toLowerCase()
-              isWikimediaUrl =
-                hostname === 'wikimedia.org' ||
-                hostname.endsWith('.wikimedia.org')
-            } catch {
-              isWikimediaUrl = false
-            }
-            if (isWikimediaUrl && parsed) {
-              const fileNameMatch =
-                parsed.pathname.match(/\/wiki\/File:(.+)$/i) ??
-                parsed.pathname.match(
-                  /\/commons\/(?:(thumb)\/)?[a-z0-9]+\/[a-z0-9]+\/(?:[^/]+\/)?([^/]+)$/,
-                )
-              if (fileNameMatch) {
-                const isFilePage = fileNameMatch[0].includes('/wiki/File:')
-                const fileName = decodeURIComponent(
-                  isFilePage ? `File:${fileNameMatch[1]}` : fileNameMatch[2],
-                )
-                const normalizedFileName =
-                  !isFilePage && fileNameMatch[1]
-                    ? fileName.replace(/^\d+px-/, '')
-                    : fileName
-                console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
-                const newUrl = await getWikimediaImageUrl(normalizedFileName)
-                if (newUrl) {
-                  console.log(`  成功修復：${newUrl}`)
-                  const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
-                  content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
-                  modified = true
-                } else {
-                  console.log(`  無法修復：找不到對應的 Wikimedia 檔案`)
-                }
+          // 嘗試修復 Wikimedia 連結
+          let isWikimediaUrl = false
+          let parsed: URL | null = null
+          try {
+            parsed = new URL(url)
+            const hostname = parsed.hostname.toLowerCase()
+            isWikimediaUrl =
+              hostname === 'wikimedia.org' ||
+              hostname.endsWith('.wikimedia.org')
+          } catch {
+            isWikimediaUrl = false
+          }
+          if (isWikimediaUrl && parsed) {
+            const fileNameMatch =
+              parsed.pathname.match(/\/wiki\/File:(.+)$/i) ??
+              parsed.pathname.match(
+                /\/commons\/(?:(thumb)\/)?[a-z0-9]+\/[a-z0-9]+\/(?:[^/]+\/)?([^/]+)$/,
+              )
+            if (fileNameMatch) {
+              const isFilePage = fileNameMatch[0].includes('/wiki/File:')
+              const fileName = decodeURIComponent(
+                isFilePage ? `File:${fileNameMatch[1]}` : fileNameMatch[2],
+              )
+              const normalizedFileName =
+                !isFilePage && fileNameMatch[1]
+                  ? fileName.replace(/^\d+px-/, '')
+                  : fileName
+              console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
+              const newUrl = await getWikimediaImageUrl(normalizedFileName)
+              if (newUrl) {
+                console.log(`  成功修復：${newUrl}`)
+                const escapedUrl = url.replace(/[.*+?^${}()|[\\]/g, '\\$&')
+                content = content.replace(new RegExp(escapedUrl, 'g'), newUrl)
+                modified = true
+              } else {
+                console.log(`  無法修復：找不到對應的 Wikimedia 檔案`)
               }
             }
           }
