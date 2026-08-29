@@ -1,6 +1,6 @@
 # Gornergrat
 
-![Gornergrat photo by Huang An Sheng](https://i.imgur.com/pFHiWTQ.jpg)
+<img src="https://i.imgur.com/pFHiWTQ.jpg" alt="Gornergrat photo by Huang An Sheng" width="1420" height="1826" style="aspect-ratio: 1420 / 1826;">
 
 一個可以看到馬特洪峰的觀景台，可以搭登山火車上去。這裡除了可以觀賞馬特洪峰之外，也可以看到阿爾卑斯山脈的 Grenzgletscher 冰河。
 
