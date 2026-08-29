@@ -93,7 +93,7 @@ async function run(targetDir?: string) {
   for (const file of files) {
     let content = fs.readFileSync(file, 'utf-8')
     const imageRegexes = [
-      /!\[[^\]]*\]\((\S+?)(?:\s+"[^"]*")?\)/g,
+      /!\[(.*?)\]\(((?:[^()]+|\([^()]*\))*)\)/g,
       /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
     ]
     let modified = false
@@ -101,7 +101,7 @@ async function run(targetDir?: string) {
     for (const imgRegex of imageRegexes) {
       let match: RegExpExecArray | null
       while ((match = imgRegex.exec(content)) !== null) {
-        const url = match[1]
+        const url = (match[2] ?? match[1]).trim().replace(/\s+"[^"]*"$/, '')
         if (url.startsWith('http')) {
           const isValid = await checkUrl(url)
           if (!isValid) {
@@ -111,8 +111,9 @@ async function run(targetDir?: string) {
 
             // 嘗試修復 Wikimedia 連結
             let isWikimediaUrl = false
+            let parsed: URL | null = null
             try {
-              const parsed = new URL(url)
+              parsed = new URL(url)
               const hostname = parsed.hostname.toLowerCase()
               isWikimediaUrl =
                 hostname === 'wikimedia.org' ||
@@ -120,15 +121,21 @@ async function run(targetDir?: string) {
             } catch {
               isWikimediaUrl = false
             }
-            if (isWikimediaUrl) {
-              const fileNameMatch = url.match(
-                /\/commons\/(?:(thumb)\/)?[a-z0-9]+\/[a-z0-9]+\/(?:[^/]+\/)?([^/]+)$/,
-              )
+            if (isWikimediaUrl && parsed) {
+              const fileNameMatch =
+                parsed.pathname.match(/\/wiki\/File:(.+)$/i) ??
+                parsed.pathname.match(
+                  /\/commons\/(?:(thumb)\/)?[a-z0-9]+\/[a-z0-9]+\/(?:[^/]+\/)?([^/]+)$/,
+                )
               if (fileNameMatch) {
-                const fileName = decodeURIComponent(fileNameMatch[2])
-                const normalizedFileName = fileNameMatch[1]
-                  ? fileName.replace(/^\d+px-/, '')
-                  : fileName
+                const isFilePage = fileNameMatch[0].includes('/wiki/File:')
+                const fileName = decodeURIComponent(
+                  isFilePage ? `File:${fileNameMatch[1]}` : fileNameMatch[2],
+                )
+                const normalizedFileName =
+                  !isFilePage && fileNameMatch[1]
+                    ? fileName.replace(/^\d+px-/, '')
+                    : fileName
                 console.log(`  嘗試從 Wikimedia API 獲取新連結：${fileName}`)
                 const newUrl = await getWikimediaImageUrl(normalizedFileName)
                 if (newUrl) {
