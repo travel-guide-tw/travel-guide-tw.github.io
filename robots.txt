@@ -1,0 +1,5 @@
+# Disallow crawling of all .html pages
+User-agent: *
+Disallow:
+
+Sitemap: https://travel-guide-tw.github.io/sitemap.xml
