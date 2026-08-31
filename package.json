@@ -57,7 +57,7 @@
     "markdown-it": "^14.1.0",
     "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^11.12.2",
-    "open-graph-scraper": "^6.10.0",
+    "open-graph-scraper": "^6.12.0",
     "prettier": "^3.8.1",
     "probe-image-size": "^7.2.3",
     "sass": "^1.97.3",
