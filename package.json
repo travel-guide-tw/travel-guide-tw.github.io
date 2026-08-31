@@ -51,7 +51,7 @@
     "@types/node": "^25.0.10",
     "autocorrect-node": "^2.14.0",
     "cheerio": "^1.2.0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "glob": "^13.0.0",
     "husky": "^9.1.7",
     "markdown-it": "^14.1.0",
